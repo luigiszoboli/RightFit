@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Right Fit</string>
+    <string name="logo">RIGHT FIT</string>
+    <string name="entrar">Entrar</string>
+    <string name="text_cadastro">Não tem uma conta? Cadastre-se.</string>
+    <string name="title_cadastro">Cadastre-se</string>
+</resources>
