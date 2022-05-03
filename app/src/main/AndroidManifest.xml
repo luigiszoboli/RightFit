@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RightFit" >
         <activity
-            android:name=".TelaPerfil"
+            android:name=".view.TelaPerfil"
             android:exported="false" />
         <activity
-            android:name=".FormCadastro"
+            android:name=".view.FormCadastro"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".FormLogin"
+            android:name=".view.FormLogin"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

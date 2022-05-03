@@ -1,4 +1,4 @@
-package com.luigi.projetc;
+package com.luigi.projetc.view;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.Normalizer;
+import com.luigi.projetc.R;
 
 public class FormLogin extends AppCompatActivity {
 

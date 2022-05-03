@@ -1,8 +1,10 @@
-package com.luigi.projetc;
+package com.luigi.projetc.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.luigi.projetc.R;
 
 public class FormCadastro extends AppCompatActivity {
 
