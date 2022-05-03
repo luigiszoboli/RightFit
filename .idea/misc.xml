@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/container_user.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_email.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_email_white.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_user.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_user2.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_user_limegreen.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/drawable/ic_user_white.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/layout/activity_form_cadastro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/layout/activity_form_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/Desktop/Material/RightFit/app/src/main/res/layout/activity_tela_perfil.xml" value="0.25" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable-v24/button.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable-v24/container_components.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable-v24/edit_text.xml" value="0.1" />
