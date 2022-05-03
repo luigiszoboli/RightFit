@@ -1,7 +1,8 @@
 package com.luigi.projetc.view;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.luigi.projetc.R;
 

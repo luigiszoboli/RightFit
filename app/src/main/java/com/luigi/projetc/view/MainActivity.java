@@ -1,8 +1,8 @@
 package com.luigi.projetc.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.luigi.projetc.R;
 import com.luigi.projetc.controler.UsuarioConctroller;
@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UsuarioConctroller usuarioConctroller=new UsuarioConctroller();
-        Usuario u  = new Usuario()
-        usuarioConctroller.cadastrarUsuario( );
+       /* UsuarioConctroller usuarioConctroller=new UsuarioConctroller();
+        Usuario u  = new Usuario();
+        usuarioConctroller.cadastrarUsuario( );*/
     }
 }
