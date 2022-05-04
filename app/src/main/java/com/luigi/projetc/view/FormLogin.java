@@ -28,6 +28,7 @@ public class FormLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(FormLogin.this, FormCadastro.class);
+                intent.putExtra("id_user",0);
                 startActivity(intent);
             }
         });

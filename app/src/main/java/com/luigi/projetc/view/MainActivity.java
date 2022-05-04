@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.luigi.projetc.R;
-import com.luigi.projetc.controler.UsuarioConctroller;
-import com.luigi.projetc.model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 

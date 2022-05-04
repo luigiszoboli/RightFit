@@ -1,15 +1,32 @@
-package com.luigi.projetc.controler;
+package com.luigi.projetc.controller;
+
+import android.content.Context;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.luigi.projetc.model.Usuario;
 import com.luigi.projetc.model.UsuarioDao;
 
-public class UsuarioConctroller {
-    UsuarioDao usuarioDao;
+public class UserController {
 
-    public UsuarioConctroller() {
+
+
+    /*
+
+    UsuarioDao usuarioDao;
+    Context mCoxtext;
+
+
+    public UserController(Context c){
+
+    }
+
+
+    public User cadastrarnovoUsuario
+    public UserController() {
         this.usuarioDao = new UsuarioDao();
     }
-    /*cadastrar , alterar, excluir e login   */
+    cadastrar , alterar, excluir e login
 
 
     public void cadastrarUsuario(Usuario  u){
@@ -22,7 +39,7 @@ public class UsuarioConctroller {
         //verificações de negocio
         return  this.usuarioDao.atulizaUsuario(u);
     }
-
+*/
 
 
 
