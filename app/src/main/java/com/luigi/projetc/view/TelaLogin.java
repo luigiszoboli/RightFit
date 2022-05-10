@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.luigi.projetc.R;
 
-public class FormLogin extends AppCompatActivity {
+public class TelaLogin extends AppCompatActivity {
 
     private TextView text_tela_cadastro;
 
@@ -18,7 +18,7 @@ public class FormLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_login);
+        setContentView(R.layout.activity_tela_login);
 
         getSupportActionBar().hide();
         IniciarComponentes();
@@ -27,7 +27,7 @@ public class FormLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(FormLogin.this, FormCadastro.class);
+                Intent intent = new Intent(TelaLogin.this, TelaCadastro.class);
                 intent.putExtra("id_user",0);
                 startActivity(intent);
             }

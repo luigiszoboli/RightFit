@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.luigi.projetc.R;
 
-public class FormCadastro extends AppCompatActivity {
+public class TelaCadastro extends AppCompatActivity {
 
     private EditText edit_name, edit_email, edit_senha;
     private Button bt_cadastrar;
@@ -29,7 +29,7 @@ public class FormCadastro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_cadastro);
+        setContentView(R.layout.activity_tela_cadastro);
 
         getSupportActionBar().hide();
         IniciarComponents();

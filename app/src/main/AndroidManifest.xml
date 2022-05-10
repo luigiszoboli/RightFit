@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.luigi.projetc" >
+    package="com.luigi.projetc">
 
     <application
         android:allowBackup="true"
@@ -8,19 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RightFit" >
+        android:theme="@style/Theme.RightFit">
+        <activity
+            android:name=".view.TelaAdicionarAliemento"
+            android:exported="false" />
+        <activity
+            android:name=".view.TelaRegistroAlimento"
+            android:exported="false" />
         <activity
             android:name=".view.TelaPerfil"
             android:exported="false" />
         <activity
-            android:name=".view.FormCadastro"
+            android:name=".view.TelaCadastro"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.FormLogin"
-            android:exported="true" >
+            android:name=".view.TelaLogin"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
