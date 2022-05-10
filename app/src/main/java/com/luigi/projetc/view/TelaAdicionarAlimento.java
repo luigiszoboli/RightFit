@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.luigi.projetc.R;
+
 public class TelaAdicionarAlimento extends AppCompatActivity {
 
     @Override
