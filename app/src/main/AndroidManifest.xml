@@ -13,6 +13,9 @@
             android:name=".view.TelaAdicionarAlimento"
             android:exported="false" />
         <activity
+            android:name=".view.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.TelaPerfil"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:name=".view.TelaLogin"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.TelaRegistroAlimento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
