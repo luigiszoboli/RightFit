@@ -7,19 +7,6 @@
     android:background="@drawable/background"
     tools:context=".view.TelaAdicionarAlimento">
 
-
-    <View
-        android:id="@+id/containerComponents"
-        style="@style/ContainerComponents"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/edit_alimento"
         style="@style/Edit_Text"
@@ -27,9 +14,9 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintStart_toEndOf="@id/containerComponents" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <EditText
         android:id="@+id/edit_quantidade"
         style="@style/Edit_Text"
@@ -37,51 +24,62 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edit_alimento"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintStart_toEndOf="@id/containerComponents" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_alimento"/>
 
+    <EditText
+        android:id="@+id/edit_calorias"
+        style="@style/Edit_Text"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:hint="Calorias"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/edit_gorduras"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_quantidade" />
 
-    <LinearLayout
-        android:id="@+id/linearlayout"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@id/edit_quantidade">
-
-        <EditText
-            android:id="@+id/edit_calorias"
-            style="@style/Edit_Text"
-            android:layout_width="144dp"
-            android:layout_height="64dp"
-            android:hint="Calorias"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/edit_gorduras"
-            style="@style/Edit_Text"
-            android:layout_width="144dp"
-            android:layout_height="64dp"
-            android:layout_marginLeft="-6dp"
-            android:hint="Gorduras"
-            android:inputType="text" />
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/edit_gorduras"
+        style="@style/Edit_Text"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:hint="Gorduras"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_quantidade" />
+  <TextView
+        android:id="@+id/edit_carbo"
+        style="@style/Edit_Text"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:hint="Carbo"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_calorias" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:onClick="adicionarAlimento"
         android:text="Adicionar Alimento"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@id/linearlayout" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_carbo" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

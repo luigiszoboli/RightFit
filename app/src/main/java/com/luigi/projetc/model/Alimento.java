@@ -1,16 +1,19 @@
 package com.luigi.projetc.model;
 
-import java.util.HashMap;
-
 public class Alimento {
     Integer id;
-    String nome ;
-    HashMap<String,Float>  nutrientes;
+    String nome;
+    String calorias;
 
-    public Alimento(Integer id, String nome) {
+    public Alimento(Integer id, String nome, String calorias) {
         this.id = id;
         this.nome = nome;
-        this.nutrientes= new HashMap<>();
+        this.calorias = calorias;
+    }
+
+    public Alimento(String nome, String calorias) {
+        this.nome = nome;
+        this.calorias = calorias;
     }
 
     public Integer getId() {
@@ -29,21 +32,12 @@ public class Alimento {
         this.nome = nome;
     }
 
-    public HashMap<String, Float> getNutrientes() {
-        return nutrientes;
+    public String getCalorias() {
+        return calorias;
     }
 
-    public void setNutrientes(HashMap<String, Float> nutrientes) {
-        this.nutrientes = nutrientes;
-    }
-    public  void addNutriente( String key, Float value){
-        this.nutrientes.put(key,value);
-    }
-    public Float getNutriente ( String key) {
-        if (this.nutrientes.containsKey(key)) {
-           return this.nutrientes.get(key);
-        } else {
-            return null;
-        }
+    public void setCalorias(String calorias) {
+        this.calorias = calorias;
     }
 }
+
