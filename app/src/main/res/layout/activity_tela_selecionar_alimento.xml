@@ -7,8 +7,9 @@
     android:background="@drawable/background"
     tools:context=".view.TelaSelecionarAlimento">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="80dp"

@@ -4,4 +4,12 @@
     <string name="entrar">Entrar</string>
     <string name="text_cadastro">Não tem uma conta? Cadastre-se.</string>
     <string name="title_cadastro">Cadastre-se</string>
+    <string name="Alimento">Alimento</string>
+    <string name="Quantidade">Quantidade</string>
+    <string name="Calorias">Calorias</string>
+    <string name="Gorduras">Gorduras</string>
+    <string name="Carboidratos">Carboidratos</string>
+    <string name="Proteinas">Proteinas</string>
+    <string name="Fibras">Fibras</string>
+    <string name="text_informacoes">Informações Nutricionais</string>
 </resources>

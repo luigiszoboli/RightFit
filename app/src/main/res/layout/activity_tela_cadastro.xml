@@ -67,8 +67,6 @@
         app:layout_constraintTop_toBottomOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Cadastrar"
-
-        />
+        android:text="Cadastrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

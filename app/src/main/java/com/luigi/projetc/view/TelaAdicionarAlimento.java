@@ -20,7 +20,7 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_adicionar_alimento);
         alimentoController = new AlimentoController(getApplicationContext());
-
+        getSupportActionBar().hide();
         edNome= findViewById(R.id.edit_alimento);
         edCalorias= findViewById(R.id.edit_calorias);
     }

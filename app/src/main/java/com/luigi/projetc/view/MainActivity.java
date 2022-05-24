@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
        /* UsuarioConctroller usuarioConctroller=new UsuarioConctroller();
         Usuario u  = new Usuario();
         usuarioConctroller.cadastrarUsuario( );*/
