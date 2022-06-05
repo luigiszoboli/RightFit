@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RightFit">
         <activity
+            android:name=".view.TelaIMC"
+            android:exported="false" />
+        <activity
             android:name=".view.TelaInicial"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TelaPerfil"
+            android:name=".view.TelaConfiguracao"
             android:exported="false" />
         <activity
             android:name=".view.TelaCadastro"

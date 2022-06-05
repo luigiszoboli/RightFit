@@ -1,16 +1,14 @@
 package com.luigi.projetc.view;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.luigi.projetc.R;
+import android.os.Bundle;
 
-public class TelaPerfil extends AppCompatActivity {
+public class TelaIMC extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_perfil);
+        setContentView(R.layout.activity_tela_imc);
     }
 }
