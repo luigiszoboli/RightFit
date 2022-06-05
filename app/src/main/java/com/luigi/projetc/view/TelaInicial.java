@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.luigi.projetc.R;
 
-public class TelaRegistroAlimento extends AppCompatActivity {
+public class TelaInicial extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_registro_alimento);
+        setContentView(R.layout.activity_tela_inicial);
     }
 }

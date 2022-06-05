@@ -12,4 +12,8 @@
     <string name="Proteinas">Proteinas</string>
     <string name="Fibras">Fibras</string>
     <string name="text_informacoes">Informações Nutricionais</string>
+    <string name="menu_inicial">Início</string>
+    <string name="menu_registro">Registro</string>
+    <string name="menu_imc">IMC</string>
+    <string name="menu_configurações">Configurações</string>
 </resources>

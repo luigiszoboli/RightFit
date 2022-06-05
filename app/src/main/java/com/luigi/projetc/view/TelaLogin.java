@@ -19,8 +19,6 @@ public class TelaLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-
-        getSupportActionBar().hide();
         IniciarComponentes();
 
         text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
