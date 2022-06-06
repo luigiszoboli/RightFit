@@ -10,15 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RightFit">
         <activity
-            android:name=".view.TelaIMC"
-            android:exported="false" />
-        <activity
-            android:name=".view.TelaInicial"
-            android:exported="false" />
-        <activity
-            android:name=".view.TelaRegistroAlimento"
-            android:exported="false" />
-        <activity
             android:name=".view.TelaAdicionarAlimento"
             android:exported="false" />
         <activity

@@ -4,25 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/menu_inicial">
-
-    <activity
+    <fragment
         android:id="@+id/menu_inicial"
         android:name="com.luigi.projetc.view.TelaInicial"
         android:label="@string/menu_inicial"
-        tools:layout="@layout/activity_tela_inicial" />
-    <activity
+        tools:layout="@layout/fragment_tela_inicial" />
+    <fragment
         android:id="@+id/menu_registro"
         android:name="com.luigi.projetc.view.TelaRegistroAlimento"
         android:label="@string/menu_registro"
-        tools:layout="@layout/activity_tela_registro_alimento" />
-    <activity
+        tools:layout="@layout/fragment_tela_registro_alimento" />
+    <fragment
         android:id="@+id/menu_imc"
         android:name="com.luigi.projetc.view.TelaIMC"
         android:label="@string/menu_imc"
-        tools:layout="@layout/activity_tela_imc" />
-    <activity
+        tools:layout="@layout/fragment_tela_imc" />
+    <fragment
         android:id="@+id/menu_config"
         android:name="com.luigi.projetc.view.TelaConfiguracao"
-        android:label="@string/menu_configurações"
-        tools:layout="@layout/activity_tela_configuracao" />
+        android:label="@string/menu_configurações" />
 </navigation>
