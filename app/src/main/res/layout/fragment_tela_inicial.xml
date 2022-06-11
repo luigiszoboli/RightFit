@@ -7,15 +7,118 @@
     android:background="@drawable/background"
     tools:context=".view.TelaInicial">
 
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/ContainerComponents"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_magenta"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/textView_caloriasrestantes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_inicial"
-        android:textColor="@color/limegreen"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="@string/Calorias_restantes"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+
+
+    <EditText
+        android:id="@+id/editText_meta"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/textView_caloriasrestantes" />
+    <TextView
+        android:id="@+id/textView_meta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Meta"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/textView_calorias_ingeridas"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="@id/editText_meta"
+        app:layout_constraintTop_toBottomOf="@+id/editText_meta" />
+
+
+    <TextView
+        android:id="@+id/editText_calorias_ingeridas"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/editText_meta"
+        app:layout_constraintTop_toBottomOf="@id/textView_caloriasrestantes" />
+    <TextView
+        android:id="@+id/textView_calorias_ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Calorias_ingeridas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_calorias_ingeridas"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="@id/editText_calorias_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_calorias_ingeridas" />
+
+    <TextView
+        android:id="@+id/editText_restante"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editText_calorias_ingeridas"
+        app:layout_constraintTop_toBottomOf="@id/textView_caloriasrestantes" />
+    <TextView
+        android:id="@+id/textView_restante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Restantes"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_restante"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/textView_calorias_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_restante" />
+
+    <TextView
+        android:id="@+id/menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_meta"
+        app:layout_constraintEnd_toStartOf="@+id/editText_calorias_ingeridas"
+        app:layout_constraintStart_toEndOf="@+id/editText_meta"
+        app:layout_constraintTop_toBottomOf="@+id/textView_caloriasrestantes" />
+
+    <TextView
+        android:id="@+id/igual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/editText_calorias_ingeridas"
+        app:layout_constraintEnd_toStartOf="@+id/editText_restante"
+        app:layout_constraintStart_toEndOf="@+id/editText_calorias_ingeridas"
+        app:layout_constraintTop_toTopOf="@+id/editText_restante" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
