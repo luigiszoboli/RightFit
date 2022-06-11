@@ -24,6 +24,9 @@
     <string name="Manha">Café da Manhã</string>
     <string name="Tarde">Almoço</string>
     <string name="Noite">Janta</string>
+    <string name="Peso">Peso</string>
+    <string name="Altura">Altura</string>
+    <string name="Adicionar_Informacoes">Adicionar Informações</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

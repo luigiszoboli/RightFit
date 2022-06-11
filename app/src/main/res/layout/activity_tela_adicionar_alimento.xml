@@ -7,11 +7,11 @@
     android:background="@drawable/background"
     tools:context=".view.TelaAdicionarAlimento">
 
-    <EditText
+    <TextView
         android:id="@+id/edit_alimento"
         style="@style/Edit_Text"
         android:hint="@string/Alimento"
-        android:inputType="text"
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,16 +33,18 @@
         android:id="@+id/edit_quantidade"
         style="@style/Edit_Text"
         android:hint="@string/Quantidade"
+        android:textColorHint="@color/white"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_alimento"/>
-    <EditText
+    <TextView
         android:id="@+id/edit_calorias"
         style="@style/Edit_Text"
         android:hint="@string/Calorias"
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
         android:hint="@string/Gorduras"
+        android:textColorHint="@color/white"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_calorias" />
@@ -65,6 +68,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
         android:hint="@string/Proteinas"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +80,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
         android:hint="@string/Carboidratos"
+        android:textColorHint="@color/white"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_gorduras" />
@@ -86,6 +91,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
         android:hint="@string/Fibras"
+      android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,15 +7,105 @@
     android:background="@drawable/background"
     tools:context=".view.TelaIMC">
 
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/ContainerComponents"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/medium_dark_reddish_pink"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
+        android:id="@+id/textView_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/menu_imc"
-        android:textStyle="bold"
+        android:text="03/02/2022"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+    <TextView
+        android:id="@+id/text_informacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/Adicionar_Informacoes"
+        android:textAllCaps="true"
         android:textColor="@color/limegreen"
-        android:textSize="40sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_altura"
+        app:layout_constraintStart_toStartOf="@id/text_peso"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents" />
+    <EditText
+        android:id="@+id/text_peso"
+        style="@style/Edit_Text"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="30dp"
+        android:hint="@string/Peso"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_informacoes" />
+    <EditText
+        android:id="@+id/text_altura"
+        style="@style/Edit_Text"
+        android:layout_width="144dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="30dp"
+        android:hint="@string/Altura"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_informacoes" />
+
+    <TextView
+        android:id="@+id/text_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="@string/menu_imc"
+        android:textAllCaps="true"
+        android:textColorHint="@color/limegreen"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_altura"
+        app:layout_constraintStart_toStartOf="@id/text_peso"
+        app:layout_constraintTop_toBottomOf="@id/text_peso" />
+
+    <ImageView
+        android:id="@+id/image_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_imc"
+        app:layout_constraintStart_toStartOf="@id/text_imc"
+        app:layout_constraintTop_toBottomOf="@id/text_imc"/>
+
+    <TextView
+        android:id="@+id/text_image_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="true"
+        android:textColor="@color/limegreen"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/text_altura"
+        app:layout_constraintStart_toStartOf="@id/text_peso"
+        app:layout_constraintTop_toBottomOf="@id/image_imc" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_calcular"
+        style="@style/Button"
+        android:layout_marginTop="28dp"
+        android:onClick="calculaIMC"
+        android:text="Calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/text_image_imc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
