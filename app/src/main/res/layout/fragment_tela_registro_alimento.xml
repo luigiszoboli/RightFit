@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".view.TelaRegistroAlimento">
-
 
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        android:layout_height="105dp"
+        android:layout_height="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/dark_magenta"
+        android:background="@color/medium_dark_reddish_pink"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="03/02/2022"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+
+    <View
+        android:id="@+id/containerComponents2"
+        style="@style/ContainerComponents"
+        android:layout_height="105dp"
+        android:layout_marginTop="152dp"
+        android:background="@color/dark_magenta"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents" />
 
     <TextView
         android:id="@+id/textView_caloriasrestantes"
@@ -25,9 +48,9 @@
         android:text="@string/Calorias_restantes"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+        app:layout_constraintTop_toTopOf="@id/containerComponents2"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
 
 
     <EditText
@@ -38,9 +61,9 @@
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
         app:layout_constraintTop_toBottomOf="@id/textView_caloriasrestantes" />
     <TextView
         android:id="@+id/textView_meta"
@@ -121,5 +144,88 @@
         app:layout_constraintStart_toEndOf="@+id/editText_calorias_ingeridas"
         app:layout_constraintTop_toTopOf="@+id/editText_restante" />
 
+    <TextView
+        android:id="@+id/textView_manha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Manha"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents2"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_entrar"
+        style="@style/Button2"
+        android:layout_height="50dp"
+        android:text="@string/Adicionar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_manha" />
+
+    <ListView
+        android:id="@+id/list1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_entrar"/>
+
+    <TextView
+        android:id="@+id/textView_tarde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Tarde"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/list1"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_entrar2"
+        style="@style/Button2"
+        android:layout_height="50dp"
+        android:text="@string/Adicionar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_tarde" />
+
+    <ListView
+        android:id="@+id/list2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_entrar2"/>
+
+    <TextView
+        android:id="@+id/textView_noite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Noite"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/list2"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_entrar3"
+        style="@style/Button2"
+        android:layout_height="50dp"
+        android:text="@string/Adicionar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_noite" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_entrar3"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

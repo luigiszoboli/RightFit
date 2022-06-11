@@ -20,6 +20,10 @@
     <string name="Calorias_ingeridas">Ingeridas</string>
     <string name="Restantes">Restantes</string>
     <string name="Meta">Meta</string>
+    <string name="Adicionar">Adicionar Alimentos</string>
+    <string name="Manha">Café da Manhã</string>
+    <string name="Tarde">Almoço</string>
+    <string name="Noite">Janta</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
