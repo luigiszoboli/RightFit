@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
 
     xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -17,17 +16,22 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="60sp"
-        android:textColor="@color/limegreen"
-        android:textStyle="bold"
         android:layout_margin="70dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textColor="@color/limegreen"
+        android:textSize="70sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
+        android:background="@drawable/background"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
@@ -35,8 +39,9 @@
     <EditText
         android:id="@+id/edit_email"
         style="@style/Edit_Text"
-        android:hint="Email"
-        android:drawableRight="@drawable/ic_email"
+        android:textColorHint="@color/white"
+        android:hint="   Email"
+        android:drawableLeft="@drawable/ic_email"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,8 +52,9 @@
     <EditText
         android:id="@+id/edit_senha"
         style="@style/Edit_Text"
-        android:hint="Senha"
-        android:drawableRight="@drawable/ic_eye"
+        android:textColorHint="@color/white"
+        android:hint="   Senha"
+        android:drawableLeft="@drawable/ic_eye"
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
