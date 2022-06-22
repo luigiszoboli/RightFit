@@ -29,14 +29,13 @@
         app:layout_constraintEnd_toEndOf="@id/containerComponents" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/editText_meta"
         android:layout_width="92dp"
         android:layout_height="43dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
@@ -121,4 +120,338 @@
         app:layout_constraintTop_toTopOf="@+id/editText_restante" />
 
 
+
+
+
+    <View
+        android:id="@+id/containerComponents2"
+        style="@style/ContainerComponents"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_magenta"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents"  />
+
+    <TextView
+        android:id="@+id/textView_Gorduras_Ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Gorduras_Ingeridas"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="@id/containerComponents2"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
+
+    <TextView
+        android:id="@+id/editText_gorduras_indicada"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/containerComponents2"
+        app:layout_constraintTop_toBottomOf="@id/textView_Gorduras_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_gorduras_indicada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Indicada"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Gorduras_Ingeridas"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="@id/editText_gorduras_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/editText_gorduras_indicada" />
+
+    <TextView
+        android:id="@+id/editText_gorduras_ingeridas"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/editText_gorduras_indicada"
+        app:layout_constraintTop_toBottomOf="@id/textView_Gorduras_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_gorduras_ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Calorias_ingeridas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_gorduras_ingeridas"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="@id/editText_gorduras_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_gorduras_ingeridas" />
+
+    <TextView
+        android:id="@+id/editText_gorduras_restantes"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editText_gorduras_ingeridas"
+        app:layout_constraintTop_toBottomOf="@id/textView_Gorduras_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_gorduras_restantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Restantes"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_gorduras_restantes"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/textView_gorduras_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_gorduras_restantes" />
+
+    <TextView
+        android:id="@+id/gordura_menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_gorduras_indicada"
+        app:layout_constraintEnd_toStartOf="@+id/editText_gorduras_ingeridas"
+        app:layout_constraintStart_toEndOf="@+id/editText_gorduras_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Gorduras_Ingeridas" />
+
+    <TextView
+        android:id="@+id/gorduras_igual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/editText_gorduras_ingeridas"
+        app:layout_constraintEnd_toStartOf="@+id/editText_gorduras_restantes"
+        app:layout_constraintStart_toEndOf="@+id/editText_gorduras_ingeridas"
+        app:layout_constraintTop_toTopOf="@+id/editText_gorduras_restantes" />
+
+
+    <View
+        android:id="@+id/containerComponents3"
+        style="@style/ContainerComponents"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_magenta"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents2"  />
+
+    <TextView
+        android:id="@+id/textView_Proteinas_Ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Proteinas_Ingeridas"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="@id/containerComponents3"
+        app:layout_constraintStart_toStartOf="@id/containerComponents3"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3" />
+
+    <TextView
+        android:id="@+id/editText_proteinas_indicada"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/containerComponents3"
+        app:layout_constraintTop_toBottomOf="@id/textView_Proteinas_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_proteinas_indicada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Indicada"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Proteinas_Ingeridas"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="@id/editText_proteinas_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/editText_proteinas_indicada" />
+
+    <TextView
+        android:id="@+id/editText_proteinas_ingeridas"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/editText_proteinas_indicada"
+        app:layout_constraintTop_toBottomOf="@id/textView_Proteinas_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_proteinas_ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Calorias_ingeridas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_proteinas_ingeridas"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="@id/editText_proteinas_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_proteinas_ingeridas" />
+
+    <TextView
+        android:id="@+id/editText_proteinas_restantes"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editText_proteinas_ingeridas"
+        app:layout_constraintTop_toBottomOf="@id/textView_Proteinas_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_proteinas_restantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Restantes"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_proteinas_restantes"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/textView_proteinas_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_proteinas_restantes" />
+
+    <TextView
+        android:id="@+id/proteinas_menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_proteinas_indicada"
+        app:layout_constraintEnd_toStartOf="@+id/editText_proteinas_ingeridas"
+        app:layout_constraintStart_toEndOf="@+id/editText_proteinas_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Proteinas_Ingeridas" />
+
+    <TextView
+        android:id="@+id/proteinas_igual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/editText_proteinas_ingeridas"
+        app:layout_constraintEnd_toStartOf="@+id/editText_proteinas_restantes"
+        app:layout_constraintStart_toEndOf="@+id/editText_proteinas_ingeridas"
+        app:layout_constraintTop_toTopOf="@+id/editText_proteinas_restantes" />
+
+
+    <View
+        android:id="@+id/containerComponents4"
+        style="@style/ContainerComponents"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_magenta"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents3"  />
+
+    <TextView
+        android:id="@+id/textView_Carboidratos_Ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Carboidratos_Ingeridas"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="@id/containerComponents4"
+        app:layout_constraintStart_toStartOf="@id/containerComponents3"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3" />
+
+    <TextView
+        android:id="@+id/editText_carboidratos_indicada"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/containerComponents3"
+        app:layout_constraintTop_toBottomOf="@id/textView_Carboidratos_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_carboidratos_indicada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Indicada"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/textView_Carboidratos_Ingeridas"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="@id/editText_carboidratos_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/editText_carboidratos_indicada" />
+
+    <TextView
+        android:id="@+id/editText_carboidratos_ingeridas"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/editText_carboidratos_indicada"
+        app:layout_constraintTop_toBottomOf="@id/textView_Carboidratos_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_carboidratos_ingeridas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Calorias_ingeridas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_carboidratos_ingeridas"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="@id/editText_carboidratos_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_carboidratos_ingeridas" />
+
+    <TextView
+        android:id="@+id/editText_carboidratos_restantes"
+        android:layout_width="92dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editText_carboidratos_ingeridas"
+        app:layout_constraintTop_toBottomOf="@id/textView_Carboidratos_Ingeridas" />
+    <TextView
+        android:id="@+id/textView_carboidratos_restantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/Restantes"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/editText_carboidratos_restantes"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toEndOf="@+id/textView_carboidratos_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/editText_carboidratos_restantes" />
+
+    <TextView
+        android:id="@+id/carboidratos_menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_carboidratos_indicada"
+        app:layout_constraintEnd_toStartOf="@+id/editText_carboidratos_ingeridas"
+        app:layout_constraintStart_toEndOf="@+id/editText_carboidratos_indicada"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Carboidratos_Ingeridas" />
+
+    <TextView
+        android:id="@+id/carboidratos_igual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="@+id/editText_carboidratos_ingeridas"
+        app:layout_constraintEnd_toStartOf="@+id/editText_carboidratos_restantes"
+        app:layout_constraintStart_toEndOf="@+id/editText_carboidratos_ingeridas"
+        app:layout_constraintTop_toTopOf="@+id/editText_carboidratos_restantes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

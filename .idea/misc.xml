@@ -23,6 +23,8 @@
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/button2.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/container_user.xml" value="0.127" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/ic_config.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/drawable/ic_email_limegreen.xml" value="0.127" />
@@ -31,7 +33,7 @@
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_form_login.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_adicionar_aliemento.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_adicionar_alimento.xml" value="0.25" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_adicionar_alimento.xml" value="0.2537037037037037" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_cadastro.xml" value="0.22" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_configuracao.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/activity_tela_imc.xml" value="0.17074275362318841" />
@@ -47,9 +49,10 @@
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_adicionar_alimento.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_cadastro.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_configuracao.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_imc.xml" value="0.1" />
-        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_inicial.xml" value="0.21" />
-        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_registro_alimento.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_imc.xml" value="0.33" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_inicial.xml" value="0.5" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_registro_alimento.xml" value="0.2537037037037037" />
+        <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/layout/fragment_tela_selecionar_alimento.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuario/Desktop/RightFit/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/lavit/StudioProjects/RightFit/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lavit/StudioProjects/RightFit/app/src/main/res/layout/activity_tela_adicionar_alimento.xml" value="0.358695652173913" />

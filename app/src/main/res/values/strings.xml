@@ -27,6 +27,10 @@
     <string name="Peso">Peso</string>
     <string name="Altura">Altura</string>
     <string name="Adicionar_Informacoes">Adicionar Informações</string>
+    <string name="Gorduras_Ingeridas">Gorduras Ingeridas</string>
+    <string name="Proteinas_Ingeridas">Proteinas Ingeridas</string>
+    <string name="Carboidratos_Ingeridas">Carboidratos Ingeridas</string>
+    <string name="Indicada">Indicado</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

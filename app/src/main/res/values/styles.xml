@@ -45,4 +45,10 @@
         <item name="android:background">@drawable/button2</item>
     </style>
 
+    <style name="ContainerComponents2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="android:background">@drawable/container_components</item>
+    </style>
+
 </resources>
