@@ -24,7 +24,7 @@
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:src="@drawable/ic_arrow_back"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
+        app:layout_constraintBottom_toBottomOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +39,9 @@
         android:hint="@string/Alimento"
         android:layout_marginLeft="60dp"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageview_arrowback"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toEndOf="@+id/imageview_arrowback" />
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrowback"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toEndOf="@id/imageview_arrowback" />
 
     <TextView
         android:id="@+id/text_informacoes"
