@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initNavigation(){
+        Fragment mfragment = new Fragment();
+        Bundle args = new Bundle();
+        args.putString("Nome", "Luigi");
+        mfragment.setArguments(args);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container);
         navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
