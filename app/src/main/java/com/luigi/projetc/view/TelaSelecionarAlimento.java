@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.luigi.projetc.R;
 import com.luigi.projetc.controller.AlimentoController;
-import com.luigi.projetc.util.ConnectionHelper;
+import com.luigi.projetc.util.AppDatabase;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,7 +33,7 @@ public class TelaSelecionarAlimento extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         {
             try {
-                connection = ConnectionHelper.getConnection();
+                connection = AppDatabase.getConnection();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {

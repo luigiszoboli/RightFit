@@ -3,7 +3,6 @@ package com.luigi.projetc.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,13 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.luigi.projetc.R;
 import com.luigi.projetc.controller.AlimentoController;
 import com.luigi.projetc.model.Alimento;
-import com.luigi.projetc.util.ConnectionHelper;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class TelaAdicionarAlimento extends AppCompatActivity {
 
