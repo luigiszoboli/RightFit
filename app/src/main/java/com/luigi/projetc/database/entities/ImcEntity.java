@@ -12,10 +12,10 @@ public class ImcEntity {
     private int id;
     private double pesoKg;
     private int alturaCm;
-    private int fkUsuario;
-    private Date data;
+    private String fkUsuario;
+    private String data;
 
-    public ImcEntity(int id, double pesoKg, int alturaCm, int fkUsuario, Date data) {
+    public ImcEntity(int id, double pesoKg, int alturaCm, String fkUsuario, String data) {
         this.id = id;
         this.pesoKg = pesoKg;
         this.alturaCm = alturaCm;
@@ -47,19 +47,30 @@ public class ImcEntity {
         this.alturaCm = alturaCm;
     }
 
-    public int getFkUsuario() {
+    public String getFkUsuario() {
         return fkUsuario;
     }
 
-    public void setFkUsuario(int fkUsuario) {
+    public void setFkUsuario(String fkUsuario) {
         this.fkUsuario = fkUsuario;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "ImcEntity{" +
+                "id=" + id +
+                ", pesoKg=" + pesoKg +
+                ", alturaCm=" + alturaCm +
+                ", fkUsuario=" + fkUsuario +
+                ", data=" + data +
+                '}';
     }
 }

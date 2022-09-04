@@ -21,6 +21,9 @@ import com.luigi.projetc.database.entities.MetaEntity;
 import com.luigi.projetc.database.entities.converters.DateConverter;
 import com.luigi.projetc.model.IMCDao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -60,11 +63,23 @@ public abstract class RightFitDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 Log.e("RightFitDatabase", "Criando banco");
                 AlimentoDao dao = INSTANCE.alimentoDao();
+                DietaDao dieta = INSTANCE.dietaDao();
+                ImcDao imc = INSTANCE.imcDao();
+                MetaDao metaDao = INSTANCE.metaDao();
 
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+                dao.insertAlimento(new AlimentoEntity(0, "primeiro", 1,1,1,1,1,1,1));
+                dao.insertAlimento(new AlimentoEntity(0, "alimento", 2,2,2,2,2,2,2));
                 dao.insertAlimento(new AlimentoEntity(0, "nome", 1,1,1,1,1,1,1));
-                dao.insertAlimento(new AlimentoEntity(0, "nome", 1,1,1,1,1,1,1));
-                dao.insertAlimento(new AlimentoEntity(0, "nome", 1,1,1,1,1,1,1));
+
+                dieta.insertDieta(new DietaEntity(0, "3", 2, 2,  0, simpleDateFormat.format(new Date())));
+                dieta.insertDieta(new DietaEntity(0, "3", 1, 3, 0, simpleDateFormat.format(new Date())));
+                dieta.insertDieta(new DietaEntity(0, "2", 1, 3, 0, simpleDateFormat.format(new Date())));
+
+                metaDao.insertMeta(new MetaEntity(0, simpleDateFormat.format(new Date()), 20, "3"));
+
+                imc.insertImc(new ImcEntity(0, 30, 180, "3", simpleDateFormat.format(new Date())));
             });
         }
     };

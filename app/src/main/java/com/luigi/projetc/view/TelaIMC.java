@@ -4,11 +4,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.luigi.projetc.R;
+import com.luigi.projetc.database.RightFitDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,10 +56,27 @@ public class TelaIMC extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RightFitDatabase.getDatabase(getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String date = simpleDateFormat.format(new Date());
+
+        RightFitDatabase.getDatabase(getContext()).alimentoDao().getAllAlimentos().observe(this, alimentoEntities -> {
+            Log.e("Alimentos",alimentoEntities.toString());
+        });
+
+        RightFitDatabase.getDatabase(getContext()).dietaDao().getDietasPorUsuarioEData("3").observe(this, dietas -> {
+            Log.e("Dietas", dietas.toString());
+        });
+
+        RightFitDatabase.getDatabase(getContext()).dietaDao().getCaloriasIngeridasPorData("3", date).observe(this, dieta -> {
+            Log.e("Carboidratos", dieta == null ? "Nada" : dieta.toString());
+        });
     }
 
     @Override

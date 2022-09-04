@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(foreignKeys = {@ForeignKey(entity = AlimentoEntity.class,
         parentColumns = "id",
         childColumns = "fkAlimento",
@@ -14,17 +16,27 @@ public class DietaEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int fkUsuario;
+    private String fkUsuario;
     private int fkAlimento;
     private int quantidade;
     private int periodo;
+    private String data;
 
-    public DietaEntity(int id, int fkUsuario, int fkAlimento, int quantidade, int periodo) {
+    public DietaEntity(int id, String fkUsuario, int fkAlimento, int quantidade, int periodo, String data) {
         this.id = id;
         this.fkUsuario = fkUsuario;
         this.fkAlimento = fkAlimento;
         this.quantidade = quantidade;
         this.periodo = periodo;
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public int getId() {
@@ -35,11 +47,11 @@ public class DietaEntity {
         this.id = id;
     }
 
-    public int getFkUsuario() {
+    public String getFkUsuario() {
         return fkUsuario;
     }
 
-    public void setFkUsuario(int fkUsuario) {
+    public void setFkUsuario(String fkUsuario) {
         this.fkUsuario = fkUsuario;
     }
 
@@ -65,5 +77,17 @@ public class DietaEntity {
 
     public void setPeriodo(int periodo) {
         this.periodo = periodo;
+    }
+
+    @Override
+    public String toString() {
+        return "DietaEntity{" +
+                "id=" + id +
+                ", fkUsuario=" + fkUsuario +
+                ", fkAlimento=" + fkAlimento +
+                ", quantidade=" + quantidade +
+                ", periodo=" + periodo +
+                ", data=" + data +
+                '}';
     }
 }

@@ -100,4 +100,19 @@ public class AlimentoEntity {
     public int getId(){
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "AlimentoEntity{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", caloria=" + caloria +
+                ", gorduras=" + gorduras +
+                ", proteinas=" + proteinas +
+                ", carboidratos=" + carboidratos +
+                ", fibra=" + fibra +
+                ", sodio=" + sodio +
+                ", acucares=" + acucares +
+                '}';
+    }
 }

@@ -3,6 +3,7 @@ package com.luigi.projetc.controller;
 import android.content.Context;
 
 import com.luigi.projetc.model.Alimento;
+import com.luigi.projetc.model.AlimentoDao;
 
 import java.util.ArrayList;
 
