@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.luigi.projetc.database.enums.PeriodoEnum;
+
 import java.util.Date;
 
 @Entity(foreignKeys = {@ForeignKey(entity = AlimentoEntity.class,
@@ -19,10 +21,10 @@ public class DietaEntity {
     private String fkUsuario;
     private int fkAlimento;
     private int quantidade;
-    private int periodo;
+    private PeriodoEnum periodo;
     private String data;
 
-    public DietaEntity(int id, String fkUsuario, int fkAlimento, int quantidade, int periodo, String data) {
+    public DietaEntity(int id, String fkUsuario, int fkAlimento, int quantidade, PeriodoEnum periodo, String data) {
         this.id = id;
         this.fkUsuario = fkUsuario;
         this.fkAlimento = fkAlimento;
@@ -71,11 +73,11 @@ public class DietaEntity {
         this.quantidade = quantidade;
     }
 
-    public int getPeriodo() {
+    public PeriodoEnum getPeriodo() {
         return periodo;
     }
 
-    public void setPeriodo(int periodo) {
+    public void setPeriodo(PeriodoEnum periodo) {
         this.periodo = periodo;
     }
 

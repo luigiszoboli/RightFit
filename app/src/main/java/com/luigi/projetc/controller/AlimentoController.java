@@ -11,8 +11,8 @@ public class AlimentoController {
     Context mContext;
     AlimentoDao alimentoDao;
     public AlimentoController(Context c) {
-    mContext = c;
-    alimentoDao = new AlimentoDao(c);
+        mContext = c;
+        alimentoDao = new AlimentoDao(c);
     }
 
     public Alimento adicionarNovoAlimento(Alimento a){

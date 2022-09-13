@@ -1,5 +1,6 @@
 package com.luigi.projetc.view;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.luigi.projetc.R;
 import com.luigi.projetc.database.RightFitDatabase;
+import com.luigi.projetc.database.enums.PeriodoEnum;
+import com.luigi.projetc.database.repository.ImcRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,20 +65,22 @@ public class TelaIMC extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String date = simpleDateFormat.format(new Date());
+
+        InsertImcTask insertImcTask = new InsertImcTask(new ImcRepository(RightFitDatabase.getDatabase(getContext()).imcDao()), 33.3, 150, "2");
+        insertImcTask.execute();
 
         RightFitDatabase.getDatabase(getContext()).alimentoDao().getAllAlimentos().observe(this, alimentoEntities -> {
             Log.e("Alimentos",alimentoEntities.toString());
         });
 
-        RightFitDatabase.getDatabase(getContext()).dietaDao().getDietasPorUsuarioEData("3").observe(this, dietas -> {
+        RightFitDatabase.getDatabase(getContext()).dietaDao().getDietasPorUsuarioPeriodoEData("2", "12/09/2022", PeriodoEnum.CAFE_DA_MANHA).observe(this, dietas -> {
             Log.e("Dietas", dietas.toString());
         });
 
-        RightFitDatabase.getDatabase(getContext()).dietaDao().getCaloriasIngeridasPorData("3", date).observe(this, dieta -> {
-            Log.e("Carboidratos", dieta == null ? "Nada" : dieta.toString());
+        RightFitDatabase.getDatabase(getContext()).imcDao().getImcPorUsuarioEData("06/09/2022", date).observe(this, dieta -> {
+            Log.e("IMC", dieta == null ? "Nada" : dieta.toString());
         });
     }
 
@@ -85,4 +90,30 @@ public class TelaIMC extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tela_imc, container, false);
     }
+
+    private static class InsertImcTask extends AsyncTask<Void, Void, Void> {
+
+        private final ImcRepository repository;
+        private final double pesoKg;
+        private final int alturaCm;
+        private final String usuario;
+
+        public InsertImcTask(ImcRepository repository, double pesoKg, int alturaCm, String usuario) {
+            this.repository = repository;
+            this.pesoKg = pesoKg;
+            this.alturaCm = alturaCm;
+            this.usuario = usuario;
+        }
+
+        protected Void doInBackground(Void... urls) {
+            repository.insertImc(pesoKg,alturaCm,usuario);
+            return null;
+        }
+
+        protected void onProgressUpdate(Void... progress) {}
+
+        protected void onPostExecute(Void result) {}
+    }
+
 }
+

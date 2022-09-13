@@ -1,19 +1,15 @@
 package com.luigi.projetc.view;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.luigi.projetc.R;
 import com.luigi.projetc.databinding.ActivityMainBinding;
-import com.luigi.projetc.util.ConnectionHelper;
-
 
 public class MainActivity extends AppCompatActivity {
 

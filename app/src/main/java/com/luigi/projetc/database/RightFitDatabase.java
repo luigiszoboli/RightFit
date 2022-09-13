@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.luigi.projetc.database.dao.AlimentoDao;
@@ -18,18 +17,12 @@ import com.luigi.projetc.database.entities.AlimentoEntity;
 import com.luigi.projetc.database.entities.DietaEntity;
 import com.luigi.projetc.database.entities.ImcEntity;
 import com.luigi.projetc.database.entities.MetaEntity;
-import com.luigi.projetc.database.entities.converters.DateConverter;
-import com.luigi.projetc.model.IMCDao;
+import com.luigi.projetc.database.enums.PeriodoEnum;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {AlimentoEntity.class, DietaEntity.class, ImcEntity.class, MetaEntity.class}, version = 1)
-@TypeConverters({DateConverter.class})
 public abstract class RightFitDatabase extends RoomDatabase {
     public abstract AlimentoDao alimentoDao();
     public abstract DietaDao dietaDao();
@@ -61,25 +54,12 @@ public abstract class RightFitDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             databaseWriteExecutor.execute(() -> {
-                Log.e("RightFitDatabase", "Criando banco");
+                Log.i("RightFitDatabase", "Criando banco");
                 AlimentoDao dao = INSTANCE.alimentoDao();
-                DietaDao dieta = INSTANCE.dietaDao();
-                ImcDao imc = INSTANCE.imcDao();
-                MetaDao metaDao = INSTANCE.metaDao();
+                DietaDao dietaDao = INSTANCE.dietaDao();
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-                dao.insertAlimento(new AlimentoEntity(0, "primeiro", 1,1,1,1,1,1,1));
-                dao.insertAlimento(new AlimentoEntity(0, "alimento", 2,2,2,2,2,2,2));
-                dao.insertAlimento(new AlimentoEntity(0, "nome", 1,1,1,1,1,1,1));
-
-                dieta.insertDieta(new DietaEntity(0, "3", 2, 2,  0, simpleDateFormat.format(new Date())));
-                dieta.insertDieta(new DietaEntity(0, "3", 1, 3, 0, simpleDateFormat.format(new Date())));
-                dieta.insertDieta(new DietaEntity(0, "2", 1, 3, 0, simpleDateFormat.format(new Date())));
-
-                metaDao.insertMeta(new MetaEntity(0, simpleDateFormat.format(new Date()), 20, "3"));
-
-                imc.insertImc(new ImcEntity(0, 30, 180, "3", simpleDateFormat.format(new Date())));
+                dao.insertAlimento(new AlimentoEntity(0, "primeiro", 1,1,1,1,1,1));
+                dietaDao.insertDieta(new DietaEntity(0,"2", 1,1, PeriodoEnum.CAFE_DA_MANHA, "12/09/2022"));
             });
         }
     };

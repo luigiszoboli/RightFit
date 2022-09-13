@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.luigi.projetc.database.entities.DietaEntity;
+import com.luigi.projetc.database.enums.PeriodoEnum;
 
 import java.util.Date;
 import java.util.List;
@@ -16,8 +17,8 @@ public interface DietaDao {
     @Insert
     void insertDieta(DietaEntity... dieta);
 
-    @Query("SELECT d.* FROM DietaEntity d INNER JOIN AlimentoEntity a ON d.fkAlimento = a.id WHERE d.fkUsuario = :userId")
-    LiveData<List<DietaEntity>> getDietasPorUsuarioEData(String userId);
+    @Query("SELECT d.* FROM DietaEntity d INNER JOIN AlimentoEntity a ON d.fkAlimento = a.id WHERE d.fkUsuario = :userId AND d.data = :data AND d.periodo = :periodoEnum")
+    LiveData<List<DietaEntity>> getDietasPorUsuarioPeriodoEData(String userId, String data, PeriodoEnum periodoEnum);
 
     @Query("SELECT SUM(a.caloria * d.quantidade) FROM DietaEntity d INNER JOIN AlimentoEntity a ON d.fkAlimento = a.id WHERE d.fkUsuario = :userId AND d.data = :date")
     LiveData<Integer> getCaloriasIngeridasPorData(String userId, String date);

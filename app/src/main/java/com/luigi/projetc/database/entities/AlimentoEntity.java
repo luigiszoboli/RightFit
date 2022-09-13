@@ -15,9 +15,8 @@ public class AlimentoEntity {
     private int carboidratos;
     private int fibra;
     private int sodio;
-    private int acucares;
 
-    public AlimentoEntity(int id, String nome, int caloria, int gorduras, int proteinas, int carboidratos, int fibra, int sodio, int acucares) {
+    public AlimentoEntity(int id, String nome, int caloria, int gorduras, int proteinas, int carboidratos, int fibra, int sodio) {
         this.id = id;
         this.nome = nome;
         this.caloria = caloria;
@@ -26,7 +25,6 @@ public class AlimentoEntity {
         this.carboidratos = carboidratos;
         this.fibra = fibra;
         this.sodio = sodio;
-        this.acucares = acucares;
     }
 
     public void setId(int id) {
@@ -89,14 +87,6 @@ public class AlimentoEntity {
         this.sodio = sodio;
     }
 
-    public int getAcucares() {
-        return acucares;
-    }
-
-    public void setAcucares(int acucares) {
-        this.acucares = acucares;
-    }
-
     public int getId(){
         return id;
     }
@@ -112,7 +102,6 @@ public class AlimentoEntity {
                 ", carboidratos=" + carboidratos +
                 ", fibra=" + fibra +
                 ", sodio=" + sodio +
-                ", acucares=" + acucares +
                 '}';
     }
 }

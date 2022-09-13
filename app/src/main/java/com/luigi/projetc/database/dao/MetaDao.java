@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.luigi.projetc.database.entities.MetaEntity;
 
@@ -14,6 +15,9 @@ public interface MetaDao {
 
     @Insert
     void insertMeta(MetaEntity... meta);
+
+    @Update
+    void updateMeta(MetaEntity meta);
 
     @Query("SELECT * FROM MetaEntity")
     LiveData<List<MetaEntity>> selectAll();
