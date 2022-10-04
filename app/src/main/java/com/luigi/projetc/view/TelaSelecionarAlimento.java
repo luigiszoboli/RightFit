@@ -32,11 +32,6 @@ public class TelaSelecionarAlimento extends AppCompatActivity {
     }
 
     public void getAlimento(View v) {
-        ArrayList<String> listaAlimentos = new ArrayList<String>();
-
-        RightFitDatabase.getDatabase(getApplicationContext()).alimentoDao().getAllAlimentos().observe(this, alimentos -> {
-            Log.e("Alimentos", alimentos != null ? alimentos.toString() : "Nada Cadastrado");
-        });
     }
 
 
@@ -44,14 +39,14 @@ public class TelaSelecionarAlimento extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         AlimentoController alimentoController = new AlimentoController(this);
-        ArrayList<String> dataset= alimentoController.ListNomesAlimentos();
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                dataset
-        );
-        listView.setAdapter(adapter);
+        alimentoController.ListNomesAlimentos().observe(this,alimentos -> {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    android.R.id.text1,
+                    alimentos
+            );
+            listView.setAdapter(adapter);
+        });
     }
 
 

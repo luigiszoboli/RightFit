@@ -1,46 +1,44 @@
 package com.luigi.projetc.controller;
 
-import android.content.Context;
-import android.widget.Button;
-import android.widget.EditText;
+import android.util.Log;
 
-import com.luigi.projetc.model.Usuario;
-import com.luigi.projetc.model.UsuarioDao;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserController {
 
+    public UserController() {}
 
+    public void cadastrarUsuario(String nome, String email, String senha, OnCompleteListener onCompleteListener){
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
 
-    /*
+            if(!task.isSuccessful()){
+                onCompleteListener.onComplete(task);
+                return;
+            }
 
-    UsuarioDao usuarioDao;
-    Context mCoxtext;
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+            Map<String,Object> usuarios = new HashMap<>();
+            usuarios.put("nome", nome);
 
-    public UserController(Context c){
+            String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            DocumentReference documentReference = db.collection("Usuarios").document(usuarioID);
+            documentReference.set(usuarios).addOnSuccessListener(unused -> Log.d("db","Sucesso ao salvar os dados"))
+                    .addOnFailureListener(e -> Log.d("db_error", "Erro ao salvar os dados" + e));
+            onCompleteListener.onComplete(task);
+        });
+
 
     }
 
-
-    public User cadastrarnovoUsuario
-    public UserController() {
-        this.usuarioDao = new UsuarioDao();
+    public void logarUsuario(String email, String senha, OnCompleteListener onCompleteListener){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener(onCompleteListener);
     }
-    cadastrar , alterar, excluir e login
-
-
-    public void cadastrarUsuario(Usuario  u){
-        if (u.getNome().length()>=3 ) {
-            this.usuarioDao.CadastrarUsr(u);
-        }
-    }
-
-    public Usuario alteraUsuario(Usuario u){
-        //verificações de negocio
-        return  this.usuarioDao.atulizaUsuario(u);
-    }
-*/
-
-
 
 }

@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable-v24/button.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable/button2.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable/ic_arrow_back_ios.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable/ic_config.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable/ic_inicial.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/drawable/ic_registro.xml" value="0.2975" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/layout/activity_main.xml" value="0.35688405797101447" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/layout/activity_tela_adicionar_alimento.xml" value="0.35688405797101447" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/layout/activity_tela_cadastro.xml" value="0.35688405797101447" />
+        <entry key="..\:/Git/RightFit/app/src/main/res/layout/fragment_tela_registro_alimento.xml" value="0.35688405797101447" />
         <entry key="..\:/Users/Aluno/StudioProjects/RightFit/app/src/main/res/layout/activity_form_cadastro.xml" value="0.1408514492753623" />
         <entry key="..\:/Users/Aluno/StudioProjects/RightFit/app/src/main/res/layout/activity_form_login.xml" value="0.1408514492753623" />
         <entry key="..\:/Users/Aluno/StudioProjects/RightFit/app/src/main/res/layout/activity_main.xml" value="0.1408514492753623" />

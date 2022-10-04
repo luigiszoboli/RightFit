@@ -9,6 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Repository criado para inserir IMC, imc é substituido caso já exista um imc cadastrado no dia
+ *
+ */
 public class ImcRepository {
 
     private ImcDao imcDao;

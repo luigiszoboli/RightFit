@@ -2,31 +2,38 @@ package com.luigi.projetc.controller;
 
 import android.content.Context;
 
-import com.luigi.projetc.model.Alimento;
-import com.luigi.projetc.model.AlimentoDao;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.luigi.projetc.database.RightFitDatabase;
+import com.luigi.projetc.database.dao.AlimentoDao;
+import com.luigi.projetc.database.entities.AlimentoEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlimentoController {
     Context mContext;
     AlimentoDao alimentoDao;
+
     public AlimentoController(Context c) {
         mContext = c;
-        alimentoDao = new AlimentoDao(c);
+        alimentoDao = RightFitDatabase.getDatabase(c).alimentoDao();
     }
 
-    public Alimento adicionarNovoAlimento(Alimento a){
-        return alimentoDao.inserirAlimento(a);
+    public void adicionarNovoAlimento(AlimentoEntity a){
+        alimentoDao.insertAlimento(a);
     }
 
-    public ArrayList<Alimento> listAlimentos(){
-        return alimentoDao.getListAlimentos();
+    public LiveData<List<AlimentoEntity>> listAlimentos(){
+        return alimentoDao.getAllAlimentos();
     }
-    public ArrayList<String> ListNomesAlimentos(){
-        ArrayList<String> result = new ArrayList<String>();
-        for (Alimento alimento: this.listAlimentos()) {
+
+    public MutableLiveData<List<String>> ListNomesAlimentos(){
+        List<String> result = new ArrayList<String>();
+        for (AlimentoEntity alimento: this.listAlimentos().getValue()) {
             result.add(alimento.getNome());
         }
-        return result;
+        return new MutableLiveData(result);
     }
 }

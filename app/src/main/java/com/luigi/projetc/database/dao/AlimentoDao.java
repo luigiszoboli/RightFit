@@ -20,4 +20,7 @@ public interface AlimentoDao {
 
     @Query("SELECT * FROM AlimentoEntity WHERE nome LIKE '%' || :search ||'%'")
     LiveData<List<AlimentoEntity>> pesquisarAlimentos(String search);
+
+    @Query("SELECT * FROM AlimentoEntity WHERE id = :id")
+    LiveData<AlimentoEntity> getAlimentoPorId(int id);
 }

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.luigi.projetc.R;
 import com.luigi.projetc.controller.AlimentoController;
-import com.luigi.projetc.model.Alimento;
 
 public class TelaAdicionarAlimento extends AppCompatActivity {
 
@@ -29,6 +28,5 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
 
     public void adicionarAlimento(View v) {
         // TODO Adicionar alimento
-        Alimento a = alimentoController.adicionarNovoAlimento(new Alimento(edNome.getText().toString(), edCalorias.getText().toString()));
     }
 }

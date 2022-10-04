@@ -1,7 +1,10 @@
 package com.luigi.projetc.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import javax.annotation.Nullable;
 
 @Entity
 public class AlimentoEntity {
@@ -10,13 +13,13 @@ public class AlimentoEntity {
     private int id;
     private String nome;
     private int caloria;
-    private int gorduras;
-    private int proteinas;
-    private int carboidratos;
-    private int fibra;
+    private double gorduras;
+    private double proteinas;
+    private double carboidratos;
+    private double fibra;
     private int sodio;
 
-    public AlimentoEntity(int id, String nome, int caloria, int gorduras, int proteinas, int carboidratos, int fibra, int sodio) {
+    public AlimentoEntity(int id, String nome, int caloria, double gorduras, double proteinas, double carboidratos, double fibra, int sodio) {
         this.id = id;
         this.nome = nome;
         this.caloria = caloria;
@@ -29,6 +32,10 @@ public class AlimentoEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getNome() {
@@ -47,35 +54,35 @@ public class AlimentoEntity {
         this.caloria = caloria;
     }
 
-    public int getGorduras() {
+    public double getGorduras() {
         return gorduras;
     }
 
-    public void setGorduras(int gorduras) {
+    public void setGorduras(double gorduras) {
         this.gorduras = gorduras;
     }
 
-    public int getProteinas() {
+    public double getProteinas() {
         return proteinas;
     }
 
-    public void setProteinas(int proteinas) {
+    public void setProteinas(double proteinas) {
         this.proteinas = proteinas;
     }
 
-    public int getCarboidratos() {
+    public double getCarboidratos() {
         return carboidratos;
     }
 
-    public void setCarboidratos(int carboidratos) {
+    public void setCarboidratos(double carboidratos) {
         this.carboidratos = carboidratos;
     }
 
-    public int getFibra() {
+    public double getFibra() {
         return fibra;
     }
 
-    public void setFibra(int fibra) {
+    public void setFibra(double fibra) {
         this.fibra = fibra;
     }
 
@@ -87,10 +94,7 @@ public class AlimentoEntity {
         this.sodio = sodio;
     }
 
-    public int getId(){
-        return id;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return "AlimentoEntity{" +

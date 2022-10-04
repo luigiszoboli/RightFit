@@ -11,16 +11,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.luigi.projetc.R;
+import com.luigi.projetc.controller.UserController;
 
 public class TelaLogin extends AppCompatActivity {
 
@@ -28,13 +25,14 @@ public class TelaLogin extends AppCompatActivity {
     private EditText edit_email, edit_senha;
     private Button button_entrar;
     private ProgressBar progressBar;
+    private UserController userController;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-        IniciarComponentes();
+        init();
 
         text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,82 +47,59 @@ public class TelaLogin extends AppCompatActivity {
         button_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String email = edit_email.getText().toString();
                 String senha = edit_senha.getText().toString();
 
-
                 if (email.isEmpty() || senha.isEmpty()){
-                    String mensagens_status = "Preencha todos os campos";
-                    Snackbar snackbar = Snackbar.make(view, mensagens_status, Snackbar.LENGTH_SHORT);
+                    Snackbar snackbar = Snackbar.make(view, "Preencha todos os campos", Snackbar.LENGTH_SHORT);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
                 }else {
-                    AutenticarUsuario(view);
+                    autenticarUsuario(view);
                 }
             }
         });
     }
 
-    private void AutenticarUsuario(View view){
+    private void autenticarUsuario(View view){
 
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        userController.logarUsuario(email, senha, task -> {
+            if (task.isSuccessful()){
+                progressBar.setVisibility(View.VISIBLE);
 
-                if (task.isSuccessful()){
+                new Handler().postDelayed(() -> abrirMainActivity(),2000);
+            }else {
+                String error = task.getException().getMessage();
 
-                    progressBar.setVisibility(View.VISIBLE);
-
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            MainActvity();
-                        }
-                    },2000);
-                }else {
-                    String error;
-
-                    try {
-                        throw task.getException();
-                    }catch (Exception e){
-                        error = "Erro no login";
-                    }
-                    Snackbar snackbar = Snackbar.make(view,error, Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
-                }
+                Snackbar snackbar = Snackbar.make(view,error == null ? "Ocorreu um erro inexperado!" : error, Snackbar.LENGTH_SHORT);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.show();
             }
         });
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseUser usurarioAtual = FirebaseAuth.getInstance().getCurrentUser();
-
         if (usurarioAtual != null){
-            MainActvity();
+            abrirMainActivity();
         }
-
-
     }
 
-    private void MainActvity(){
+    private void abrirMainActivity(){
         Intent intent = new Intent(TelaLogin.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void IniciarComponentes(){
+    private void init(){
+        userController = new UserController();
         text_tela_cadastro = findViewById(R.id.text_tela_cadastro);
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
