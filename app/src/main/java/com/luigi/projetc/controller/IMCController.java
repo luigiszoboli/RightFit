@@ -1,63 +1,20 @@
 package com.luigi.projetc.controller;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.luigi.projetc.database.dao.ImcDao;
+import com.luigi.projetc.database.entities.ImcEntity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import com.luigi.projetc.R;
+public class IMCController {
 
-import java.text.DecimalFormat;
+    private final ImcDao imcDao;
 
-public class IMCController extends AppCompatActivity {
-
-
-    private Button bt_calcular;
-    private TextView text_peso, text_altura, text_imc;
-    private Double peso, altura, imc;
-    DecimalFormat decimalFormat = new DecimalFormat("##,###,###,##0.00");
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_tela_imc);
-
-        text_peso = findViewById(R.id.text_peso);
-        text_altura = findViewById(R.id.text_altura);
-        text_imc = findViewById(R.id.text_imc);
-        bt_calcular = findViewById(R.id.bt_calcular);
-        Bundle bundle = getIntent().getExtras();
-        peso = bundle.getDouble("peso");
-        altura = bundle.getDouble("altura");
-        ImageView image_imc = findViewById(R.id.image_imc);
-        imc = calculaIMC(peso, altura);
-
-         /*if(imc < 18.5) {
-                    image_imc.setImageResource(R.drawable.abaixopeso);
-                     }else */
-        if (imc < 24.9) {
-            image_imc.setImageResource(R.drawable.normal);
-        } else if (imc < 29) {
-            image_imc.setImageResource(R.drawable.sobrepeso);
-        } else if (imc < 34.9) {
-            image_imc.setImageResource(R.drawable.obesidade1);
-        } else if (imc < 39.9) {
-            image_imc.setImageResource(R.drawable.obesidade2);
-        } else {
-            image_imc.setImageResource(R.drawable.obesidade3);
-
-        }
-
+    public IMCController(ImcDao imcDao) {
+        this.imcDao = imcDao;
     }
 
-
-    public Double calculaIMC (Double peso, Double altura) {
-        Double imc = peso / (altura * altura);
-        return imc;
+    public void insertImc(String altura, String peso, String userId) {
+        imcDao.insertImc(new ImcEntity(0, Double.parseDouble(peso), Integer.parseInt(altura), userId, new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
     }
-
-
 }

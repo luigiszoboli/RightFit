@@ -17,7 +17,7 @@ public interface ImcDao {
     void insertImc(ImcEntity... imc);
 
     @Query("SELECT * FROM ImcEntity WHERE data = :date AND fkUsuario = :userId")
-    LiveData<List<ImcEntity>> getImcPorUsuarioEData(String date, String userId);
+    List<ImcEntity> getImcPorUsuarioEData(String date, String userId);
 
     @Update
     void updateImc(ImcEntity imc);

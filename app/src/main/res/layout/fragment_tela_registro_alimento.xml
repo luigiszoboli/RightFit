@@ -22,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ImageView
+        android:id="@+id/image_view_dia_anterior"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_arrow_back_ios"
@@ -30,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="@id/textView_data"/>
 
     <ImageView
+        android:id="@+id/image_view_dia_posterior"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_arrow_back_ios"
@@ -73,10 +75,12 @@
         android:id="@+id/editText_meta"
         android:layout_width="92dp"
         android:layout_height="43dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         android:inputType="number"
+        android:imeOptions="actionSend"
         app:layout_constraintEnd_toEndOf="@id/containerComponents2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/containerComponents2"
@@ -95,10 +99,11 @@
 
 
     <TextView
-        android:id="@+id/editText_calorias_ingeridas"
+        android:id="@+id/text_view_calorias_ingeridas"
         android:layout_width="92dp"
         android:layout_height="43dp"
         android:layout_marginLeft="4dp"
+        android:textColor="@color/white"
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
@@ -112,16 +117,17 @@
         android:layout_marginTop="4dp"
         android:text="@string/Calorias_ingeridas"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/editText_calorias_ingeridas"
+        app:layout_constraintEnd_toEndOf="@id/text_view_calorias_ingeridas"
         app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toStartOf="@id/editText_calorias_ingeridas"
-        app:layout_constraintTop_toBottomOf="@+id/editText_calorias_ingeridas" />
+        app:layout_constraintStart_toStartOf="@id/text_view_calorias_ingeridas"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_calorias_ingeridas" />
 
     <TextView
-        android:id="@+id/editText_restante"
+        android:id="@+id/editText_calorias_restantes"
         android:layout_width="92dp"
         android:layout_height="43dp"
         android:layout_marginLeft="4dp"
+        android:textColor="@color/white"
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
@@ -135,10 +141,10 @@
         android:layout_marginTop="4dp"
         android:text="@string/Restantes"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/editText_restante"
+        app:layout_constraintEnd_toEndOf="@id/editText_calorias_restantes"
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toEndOf="@+id/textView_calorias_ingeridas"
-        app:layout_constraintTop_toBottomOf="@+id/editText_restante" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_calorias_restantes" />
 
     <TextView
         android:id="@+id/menos"
@@ -154,11 +160,12 @@
         android:id="@+id/igual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:text="="
         app:layout_constraintBottom_toBottomOf="@+id/editText_calorias_ingeridas"
-        app:layout_constraintEnd_toStartOf="@+id/editText_restante"
+        app:layout_constraintEnd_toStartOf="@+id/editText_calorias_restantes"
         app:layout_constraintStart_toEndOf="@+id/editText_calorias_ingeridas"
-        app:layout_constraintTop_toTopOf="@+id/editText_restante" />
+        app:layout_constraintTop_toTopOf="@+id/editText_calorias_restantes" />
 
     <TextView
         android:id="@+id/textView_manha"

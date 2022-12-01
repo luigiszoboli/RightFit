@@ -39,7 +39,7 @@ public class TelaLogin extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(TelaLogin.this, TelaCadastro.class);
-                intent.putExtra("id_user",0);
+                intent.putExtra("id_user", 0);
                 startActivity(intent);
             }
         });
@@ -50,32 +50,31 @@ public class TelaLogin extends AppCompatActivity {
                 String email = edit_email.getText().toString();
                 String senha = edit_senha.getText().toString();
 
-                if (email.isEmpty() || senha.isEmpty()){
+                if (email.isEmpty() || senha.isEmpty()) {
                     Snackbar snackbar = Snackbar.make(view, "Preencha todos os campos", Snackbar.LENGTH_SHORT);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                }else {
+                } else {
                     autenticarUsuario(view);
                 }
             }
         });
     }
 
-    private void autenticarUsuario(View view){
+    private void autenticarUsuario(View view) {
 
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
 
         userController.logarUsuario(email, senha, task -> {
-            if (task.isSuccessful()){
+            if (task.isSuccessful()) {
                 progressBar.setVisibility(View.VISIBLE);
-
-                new Handler().postDelayed(() -> abrirMainActivity(),2000);
-            }else {
+                new Handler().postDelayed(() -> abrirMainActivity(), 2000);
+            } else {
                 String error = task.getException().getMessage();
 
-                Snackbar snackbar = Snackbar.make(view,error == null ? "Ocorreu um erro inexperado!" : error, Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(view, error == null ? "Ocorreu um erro inexperado!" : error, Snackbar.LENGTH_SHORT);
                 snackbar.setBackgroundTint(Color.WHITE);
                 snackbar.setTextColor(Color.BLACK);
                 snackbar.show();
@@ -87,18 +86,18 @@ public class TelaLogin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser usurarioAtual = FirebaseAuth.getInstance().getCurrentUser();
-        if (usurarioAtual != null){
+        if (usurarioAtual != null) {
             abrirMainActivity();
         }
     }
 
-    private void abrirMainActivity(){
+    private void abrirMainActivity() {
         Intent intent = new Intent(TelaLogin.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void init(){
+    private void init() {
         userController = new UserController();
         text_tela_cadastro = findViewById(R.id.text_tela_cadastro);
         edit_email = findViewById(R.id.edit_email);

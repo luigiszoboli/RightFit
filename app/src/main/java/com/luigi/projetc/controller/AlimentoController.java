@@ -13,12 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlimentoController {
-    Context mContext;
     AlimentoDao alimentoDao;
 
-    public AlimentoController(Context c) {
-        mContext = c;
-        alimentoDao = RightFitDatabase.getDatabase(c).alimentoDao();
+    public AlimentoController(AlimentoDao alimentoDao) {
+        this.alimentoDao = alimentoDao;
     }
 
     public void adicionarNovoAlimento(AlimentoEntity a){
@@ -29,11 +27,7 @@ public class AlimentoController {
         return alimentoDao.getAllAlimentos();
     }
 
-    public MutableLiveData<List<String>> ListNomesAlimentos(){
-        List<String> result = new ArrayList<String>();
-        for (AlimentoEntity alimento: this.listAlimentos().getValue()) {
-            result.add(alimento.getNome());
-        }
-        return new MutableLiveData(result);
+    public LiveData<AlimentoEntity> getAlimentoById(int id){
+        return alimentoDao.getAlimentoPorId(id);
     }
 }

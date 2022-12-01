@@ -118,7 +118,6 @@
         android:id="@+id/bt_calcular"
         style="@style/Button"
         android:layout_marginTop="28dp"
-        android:onClick="calculaIMC"
         android:text="Calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

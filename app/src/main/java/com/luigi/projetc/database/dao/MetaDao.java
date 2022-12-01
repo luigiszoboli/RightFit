@@ -23,5 +23,5 @@ public interface MetaDao {
     LiveData<List<MetaEntity>> selectAll();
 
     @Query("SELECT * FROM MetaEntity WHERE fkUsuario = :userId AND data = :date")
-    LiveData<MetaEntity> getMetaPorUsuarioEData(String userId, String date);
+    List<MetaEntity> getMetaPorUsuarioEData(String userId, String date);
 }

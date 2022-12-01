@@ -22,7 +22,7 @@ public interface DietaDao {
     LiveData<List<AlimentoEntity>> getDietasPorUsuarioPeriodoEData(String userId, String data, PeriodoEnum periodoEnum);
 
     @Query("SELECT SUM(a.caloria * d.quantidade) FROM DietaEntity d INNER JOIN AlimentoEntity a ON d.fkAlimento = a.id WHERE d.fkUsuario = :userId AND d.data = :date")
-    LiveData<Integer> getCaloriasIngeridasPorData(String userId, String date);
+    Integer getCaloriasIngeridasPorData(String userId, String date);
 
     @Query("SELECT SUM(a.gorduras * d.quantidade) FROM DietaEntity d INNER JOIN AlimentoEntity a ON d.fkAlimento = a.id WHERE d.fkUsuario = :userId AND d.data = :date")
     LiveData<Double> getGordurasIngeridas(String userId, String date);
