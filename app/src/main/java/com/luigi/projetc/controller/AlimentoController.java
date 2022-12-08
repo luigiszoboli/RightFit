@@ -19,10 +19,6 @@ public class AlimentoController {
         this.alimentoDao = alimentoDao;
     }
 
-    public void adicionarNovoAlimento(AlimentoEntity a){
-        alimentoDao.insertAlimento(a);
-    }
-
     public LiveData<List<AlimentoEntity>> listAlimentos(){
         return alimentoDao.getAllAlimentos();
     }

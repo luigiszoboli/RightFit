@@ -1,5 +1,6 @@
 package com.luigi.projetc.view;
 
-public interface RecyclerViewOnClickListener {
-    void onClick(int alimentoId);
+// Interface para clique da recycler view
+public interface RecyclerViewOnClickListener<T> {
+    void onClick(T object);
 }

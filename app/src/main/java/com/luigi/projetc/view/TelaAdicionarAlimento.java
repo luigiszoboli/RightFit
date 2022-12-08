@@ -43,10 +43,12 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
         Intent intentExtra = getIntent();
         int alimentoId = intentExtra.getIntExtra("alimento_id", 0);
         String periodo = intentExtra.getStringExtra("periodo");
+        String data = intentExtra.getStringExtra("data");
         String userId = firebaseUser.getUid();
 
         buttonAlimento.setOnClickListener(v -> {
             String quantidade = editTextQuantidade.getText().toString();
+            //Verificando se o usuario digitou no campo
             if (quantidade.equals("") || Integer.parseInt(quantidade) <= 0) {
                 View parentLayout = findViewById(android.R.id.content);
                 Snackbar.make(parentLayout, "Insira uma quantidade!", Snackbar.LENGTH_LONG)
@@ -55,7 +57,8 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
                 return;
             }
             Runnable backgroundRunnable = () -> {
-                adicionarAlimentoController.adicionarAlimentoNaDieta(periodo, alimentoId, userId, Integer.parseInt(quantidade));
+                //Inserindo alimento na Dieta
+                adicionarAlimentoController.adicionarAlimentoNaDieta(periodo, alimentoId, userId, Integer.parseInt(quantidade), data);
             };
             mExecutor.execute(backgroundRunnable);
             finish();

@@ -1,9 +1,9 @@
 package com.luigi.projetc.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +16,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.luigi.projetc.R;
 import com.luigi.projetc.controller.RegistroAlimentoController;
 import com.luigi.projetc.database.RightFitDatabase;
+import com.luigi.projetc.database.entities.AlimentoEntity;
 import com.luigi.projetc.database.enums.PeriodoEnum;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -38,7 +42,11 @@ public class TelaRegistroAlimento extends Fragment {
     private TextView textViewCaloriasIngeridas;
     private TextView textViewRestantes;
     private EditText editTextMeta;
+    private DietaAdapter dietaAdapterManha;
+    private DietaAdapter dietaAdapterAlmoco;
+    private DietaAdapter dietaAdapterJanta;
     ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    Handler uiThread = new Handler(Looper.getMainLooper());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,49 +63,35 @@ public class TelaRegistroAlimento extends Fragment {
     }
 
     private void setObservables() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = user.getUid();
         registroAlimentoController.dataAtualObservable().observe(getViewLifecycleOwner(), data -> {
             textViewData.setText(data);
         });
         imageViewDiaAnterior.setOnClickListener(view -> {
             registroAlimentoController.diaAnterior();
-            getDadosDaTela(userId);
+            getDadosCaloria();
+            getAlimentosPorPeriodo();
         });
         imageViewDiaPosterior.setOnClickListener(view -> {
             registroAlimentoController.diaPosterior();
-            getDadosDaTela(userId);
-        });
-
-        registroAlimentoController.currentCaloriasObservable().observe(getViewLifecycleOwner(), calorias -> {
-            textViewCaloriasIngeridas.setText(calorias.toString());
-        });
-
-        registroAlimentoController.currentMetaObservable().observe(getViewLifecycleOwner(), meta -> {
-            editTextMeta.setText(String.valueOf(meta));
+            getDadosCaloria();
+            getAlimentosPorPeriodo();
         });
 
         editTextMeta.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 saveMeta(v.getText().toString());
-                getDadosDaTela(userId);
+                getDadosCaloria();
                 return true;
             }
             return false;
         });
-
-        registroAlimentoController.restantesObservable().observe(getViewLifecycleOwner(), restantes -> {
-           textViewRestantes.setText(restantes.toString());
-        });
-
-        getDadosDaTela(userId);
     }
 
     @Override
     public void onResume() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = user.getUid();
-        getDadosDaTela(userId);
+        //Buscando dados da tela
+        getDadosCaloria();
+        getAlimentosPorPeriodo();
         super.onResume();
     }
 
@@ -110,27 +104,52 @@ public class TelaRegistroAlimento extends Fragment {
         mExecutor.execute(backgroundRunnable);
     }
 
-    private void getDadosDaTela(String userId){
+    private void getDadosCaloria(){
         Runnable backgroundRunnable = () -> {
-            registroAlimentoController.getDadosParaTela(userId);
+            Integer restantes = registroAlimentoController.getRestantes();
+            Integer meta = registroAlimentoController.getMeta();
+            Integer calorias = registroAlimentoController.getCalorias();
+
+            uiThread.post(() -> {
+                textViewCaloriasIngeridas.setText(calorias.toString());
+                editTextMeta.setText(String.valueOf(meta));
+                textViewRestantes.setText(restantes.toString());
+            });
         };
         mExecutor.execute(backgroundRunnable);
+    }
+
+    private void getAlimentosPorPeriodo(){
+        Runnable runnable = () -> {
+            List<AlimentoEntity> cafeDaManha = registroAlimentoController.alimentosPorPeriodo(PeriodoEnum.CAFE_DA_MANHA);
+            List<AlimentoEntity> janta = registroAlimentoController.alimentosPorPeriodo(PeriodoEnum.JANTA);
+            List<AlimentoEntity> almoco = registroAlimentoController.alimentosPorPeriodo(PeriodoEnum.ALMOCO);
+            uiThread.post(() -> {
+                dietaAdapterManha.setAlimentos(cafeDaManha);
+                dietaAdapterJanta.setAlimentos(janta);
+                dietaAdapterAlmoco.setAlimentos(almoco);
+            });
+        };
+        mExecutor.execute(runnable);
     }
 
     private void setOnClickButtons() {
         bt_entrar.setOnClickListener(view -> {
             Intent intent = new Intent(getView().getContext(), TelaSelecionarAlimento.class);
             intent.putExtra("periodo", PeriodoEnum.CAFE_DA_MANHA.name());
+            intent.putExtra("data", registroAlimentoController.dataAtualObservable().getValue());
             startActivity(intent);
         });
         bt_entrar2.setOnClickListener(view -> {
             Intent intent = new Intent(getView().getContext(), TelaSelecionarAlimento.class);
             intent.putExtra("periodo", PeriodoEnum.ALMOCO.name());
+            intent.putExtra("data", registroAlimentoController.dataAtualObservable().getValue());
             startActivity(intent);
         });
         bt_entrar3.setOnClickListener(view -> {
             Intent intent = new Intent(getView().getContext(), TelaSelecionarAlimento.class);
             intent.putExtra("periodo", PeriodoEnum.JANTA.name());
+            intent.putExtra("data", registroAlimentoController.dataAtualObservable().getValue());
             startActivity(intent);
         });
     }
@@ -149,5 +168,18 @@ public class TelaRegistroAlimento extends Fragment {
         textViewCaloriasIngeridas = getView().findViewById(R.id.text_view_calorias_ingeridas);
         textViewRestantes = getView().findViewById(R.id.editText_calorias_restantes);
         editTextMeta = getView().findViewById(R.id.editText_meta);
+        RecyclerView recyclerViewManha = getView().findViewById(R.id.rv_1);
+        RecyclerView recyclerViewAlmoco = getView().findViewById(R.id.rv_2);
+        RecyclerView recyclerViewJanta = getView().findViewById(R.id.rv_3);
+        recyclerViewManha.setLayoutManager( new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerViewAlmoco.setLayoutManager( new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerViewJanta.setLayoutManager( new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false));
+        dietaAdapterManha = new DietaAdapter();
+        dietaAdapterAlmoco = new DietaAdapter();
+        dietaAdapterJanta = new DietaAdapter();
+
+        recyclerViewManha.setAdapter(dietaAdapterManha);
+        recyclerViewAlmoco.setAdapter(dietaAdapterAlmoco);
+        recyclerViewJanta.setAdapter(dietaAdapterJanta);
     }
 }

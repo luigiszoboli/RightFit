@@ -14,17 +14,17 @@ import com.luigi.projetc.database.entities.AlimentoEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> {
 
     private List<AlimentoEntity> alimentos = new ArrayList<>();
-    private RecyclerViewOnClickListener<Integer> recyclerViewOnClickListener;
+    private RecyclerViewOnClickListener recyclerViewOnClickListener;
 
     public void setAlimentos(List<AlimentoEntity> alimentos){
         this.alimentos = alimentos;
         notifyDataSetChanged();
     }
 
-    public void setOnClickItem(RecyclerViewOnClickListener<Integer> recyclerViewOnClickListener){
+    public void setOnClickItem(RecyclerViewOnClickListener recyclerViewOnClickListener){
         this.recyclerViewOnClickListener = recyclerViewOnClickListener;
     }
 
@@ -43,9 +43,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.getTextView().setText(alimentos.get(position).getNome());
 
         //Adicionando evento de clique em cada item da lista de alimentos
-        holder.textView.setOnClickListener(v -> {
-            recyclerViewOnClickListener.onClick(alimentos.get(position).getId());
-        });
+        if(recyclerViewOnClickListener != null){
+            holder.textView.setOnClickListener(v -> {
+                recyclerViewOnClickListener.onClick(alimentos.get(position).getId());
+            });
+        }
     }
 
     @Override

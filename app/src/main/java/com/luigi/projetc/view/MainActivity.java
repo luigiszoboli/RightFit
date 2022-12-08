@@ -27,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initNavigation(){
-        Fragment mfragment = new Fragment();
-        Bundle args = new Bundle();
-        args.putString("Nome", "Luigi");
-        mfragment.setArguments(args);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_container);
         navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController);

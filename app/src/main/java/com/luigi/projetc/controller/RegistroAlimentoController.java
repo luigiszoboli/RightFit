@@ -1,13 +1,14 @@
 package com.luigi.projetc.controller;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.luigi.projetc.database.dao.DietaDao;
 import com.luigi.projetc.database.dao.MetaDao;
+import com.luigi.projetc.database.entities.AlimentoEntity;
 import com.luigi.projetc.database.entities.MetaEntity;
+import com.luigi.projetc.database.enums.PeriodoEnum;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,18 +22,10 @@ public class RegistroAlimentoController {
     private MetaDao metaDao;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private final MutableLiveData<String> dataAtual = new MutableLiveData<>(simpleDateFormat.format(new Date()));
-    private final MutableLiveData<Integer> restantes = new MutableLiveData<>(0);
-    private final MutableLiveData<Integer> meta = new MutableLiveData<>(0);
-    private final MutableLiveData<Integer> ingeridas = new MutableLiveData<>(0);
-
 
     public RegistroAlimentoController(DietaDao dietaDao, MetaDao metaDao) {
         this.dietaDao = dietaDao;
         this.metaDao = metaDao;
-    }
-
-    public LiveData<Integer> restantesObservable(){
-        return restantes;
     }
 
     public void diaPosterior() {
@@ -74,38 +67,33 @@ public class RegistroAlimentoController {
         return dataAtual;
     }
 
-    public LiveData<Integer> currentCaloriasObservable() {
-        return ingeridas;
+    public List<AlimentoEntity> alimentosPorPeriodo(PeriodoEnum periodoEnum){
+        return dietaDao.getDietasPorUsuarioPeriodoEData(FirebaseAuth.getInstance().getCurrentUser().getUid(), dataAtual.getValue(), periodoEnum);
     }
 
-    public void getDadosParaTela(String userId){
-        Integer calorias = dietaDao.getCaloriasIngeridasPorData(userId, dataAtual.getValue());
-        List<MetaEntity> metas = metaDao.getMetaPorUsuarioEData(userId, dataAtual.getValue());
+    public Integer getRestantes(){
+        Integer calorias = getCalorias();
+        Integer metas = getMeta();
 
-        if(metas.size() == 0){
-            meta.postValue(0);
-        }
-
-        if(calorias == null || calorias == 0){
-            ingeridas.postValue(0);
+        if(calorias == null || metas == null){
+            return 0;
         }
 
-        if(calorias == null || metas.size() == 0){
-            restantes.postValue(0);
-        }
-
-        if(metas.size() != 0){
-            meta.postValue(metas.get(metas.size()-1).getQtdKcal());
-            if(calorias != null){
-                restantes.postValue(metas.get(metas.size()-1).getQtdKcal() - calorias);
-            }
-        }
-        if(calorias != null){
-            ingeridas.postValue(calorias);
-        }
+        return metas - calorias;
     }
 
-    public LiveData<Integer> currentMetaObservable() {
-        return meta;
+    public Integer getCalorias(){
+        Integer calorias = dietaDao.getCaloriasIngeridasPorData(FirebaseAuth.getInstance().getUid(), dataAtual.getValue());
+        return calorias == null ? 0 : calorias;
     }
+
+    public Integer getMeta(){
+        List<MetaEntity> metas = metaDao.getMetaPorUsuarioEData(FirebaseAuth.getInstance().getUid(), dataAtual.getValue());
+
+        if(metas == null || metas.size() == 0){
+            return 0;
+        }
+        return metas.get(metas.size()-1).getQtdKcal();
+    }
+
 }

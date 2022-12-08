@@ -1,5 +1,6 @@
 package com.luigi.projetc.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,6 @@ public class TelaCadastro extends AppCompatActivity {
     private EditText edit_name, edit_email, edit_senha;
     private Button bt_cadastrar;
     String[] mensagens_status = {"Preencha todos os campos", "Cadastro realizado com sucesso"};
-    String usuarioID;
     UserController userController;
 
 
@@ -50,10 +50,15 @@ public class TelaCadastro extends AppCompatActivity {
                     snackbar.show();
                 } else {
                     cadastrarUser(view);
-
                 }
             }
         });
+    }
+
+    private void irParaTelaInicial(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void cadastrarUser(View view) {
@@ -68,20 +73,17 @@ public class TelaCadastro extends AppCompatActivity {
                 snackbar.setBackgroundTint(Color.WHITE);
                 snackbar.setTextColor(Color.BLACK);
                 snackbar.show();
+                irParaTelaInicial();
             } else {
                 String error;
                 try {
                     throw task.getException();
-
                 } catch (FirebaseAuthWeakPasswordException exception) {
                     error = "Digite uma senha com no mínimo 6 caracteres";
-
                 } catch (FirebaseAuthUserCollisionException exception) {
                     error = "Uma conta com este e-mail já foi cadastrada";
-
                 } catch (FirebaseAuthInvalidCredentialsException exception) {
                     error = "E-mail inválido";
-
                 } catch (Exception exception) {
                     error = "Erro ao cadastrar usuário";
                 }

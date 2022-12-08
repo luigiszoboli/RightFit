@@ -15,9 +15,8 @@ public class AdicionarAlimentoController {
         this.dietaDao = dietaDao;
     }
 
-    public void adicionarAlimentoNaDieta(String periodo, int alimentoId, String userId, int quantidade){
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        DietaEntity dieta = new DietaEntity(0, userId, alimentoId,  quantidade, PeriodoEnum.valueOf(periodo), format.format(new Date()));
+    public void adicionarAlimentoNaDieta(String periodo, int alimentoId, String userId, int quantidade, String data){
+        DietaEntity dieta = new DietaEntity(0, userId, alimentoId,  quantidade, PeriodoEnum.valueOf(periodo), data);
         dietaDao.insertDieta(dieta);
     }
 }

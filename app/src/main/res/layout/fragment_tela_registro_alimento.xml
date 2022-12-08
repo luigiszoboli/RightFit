@@ -187,8 +187,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_manha" />
 
-    <ListView
-        android:id="@+id/list1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +202,7 @@
         android:text="@string/Tarde"
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/list1"
+        app:layout_constraintTop_toBottomOf="@id/rv_1"
         app:layout_constraintStart_toStartOf="@id/containerComponents2"
         app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
 
@@ -215,8 +215,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_tarde" />
 
-    <ListView
-        android:id="@+id/list2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +230,7 @@
         android:text="@string/Noite"
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/list2"
+        app:layout_constraintTop_toBottomOf="@id/rv_2"
         app:layout_constraintStart_toStartOf="@id/containerComponents2"
         app:layout_constraintEnd_toEndOf="@id/containerComponents2" />
 
@@ -243,12 +243,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_noite" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bt_entrar3"/>
+        app:layout_constraintTop_toBottomOf="@id/bt_entrar3"
+        android:layout_marginBottom="20dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

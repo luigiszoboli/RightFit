@@ -23,12 +23,9 @@ public class TelaConfiguracao extends Fragment {
     private TextView nomeUser, emailUser;
     private Button bt_deslogar;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         return inflater.inflate(R.layout.fragment_tela_configuracao, container, false);
     }
 
@@ -39,15 +36,19 @@ public class TelaConfiguracao extends Fragment {
     }
 
     private void InciarComponents(){
+        //Pegando usuario logado
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         nomeUser = getView().findViewById(R.id.text_nome_user);
         emailUser = getView().findViewById(R.id.text_nome_email_user);
         bt_deslogar = getView().findViewById(R.id.bt_deslogar);
 
+        //Mostrando nome e email do usuário logado
         nomeUser.setText(firebaseUser.getDisplayName());
         emailUser.setText(firebaseUser.getEmail());
 
         bt_deslogar.setOnClickListener(v -> {
+            //Logout do usuário e redirecionamento para tela de login
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getActivity(), TelaLogin.class));
             getActivity().finish();

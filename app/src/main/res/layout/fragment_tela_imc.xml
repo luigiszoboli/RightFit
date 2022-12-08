@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/textView_data"
+        android:id="@+id/tv_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="03/02/2022"
@@ -26,19 +26,21 @@
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents" />
     <ImageView
+        android:id="@+id/iv_dia_anterior"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_arrow_back_ios"
         app:layout_constraintTop_toTopOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/textView_data"/>
+        app:layout_constraintEnd_toEndOf="@id/tv_data"/>
 
     <ImageView
+        android:id="@+id/iv_dia_posterior"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_arrow_back_ios"
         app:layout_constraintTop_toTopOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/textView_data"
+        app:layout_constraintStart_toStartOf="@id/tv_data"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         android:rotation="180"/>
     <TextView
