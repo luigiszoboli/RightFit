@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import com.luigi.projetc.R;
 import com.luigi.projetc.controller.AdicionarAlimentoController;
 import com.luigi.projetc.controller.AlimentoController;
 import com.luigi.projetc.database.RightFitDatabase;
+import com.luigi.projetc.database.entities.DietaEntity;
+import com.luigi.projetc.database.enums.PeriodoEnum;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,6 +30,8 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
     private TextView textViewNome, textViewCalorias, textViewGorduras, textViewProteinas, textViewCarboidratos, textViewFibras;
     private EditText editTextQuantidade;
     private Button buttonAlimento;
+    private ImageView buttonBack;
+    private DietaEntity dieta;
     ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
     @Override
@@ -44,6 +49,7 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
         int alimentoId = intentExtra.getIntExtra("alimento_id", 0);
         String periodo = intentExtra.getStringExtra("periodo");
         String data = intentExtra.getStringExtra("data");
+        boolean isUpdateScreen = getIntent().getBooleanExtra("update", false);
         String userId = firebaseUser.getUid();
 
         buttonAlimento.setOnClickListener(v -> {
@@ -58,14 +64,22 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
             }
             Runnable backgroundRunnable = () -> {
                 //Inserindo alimento na Dieta
+                if(isUpdateScreen && dieta != null){
+                    dieta.setQuantidade(Integer.parseInt(quantidade));
+                    adicionarAlimentoController.atualizarQuantidadeDoALimento(dieta);
+                    return;
+                }
                 adicionarAlimentoController.adicionarAlimentoNaDieta(periodo, alimentoId, userId, Integer.parseInt(quantidade), data);
             };
             mExecutor.execute(backgroundRunnable);
             finish();
         });
+
+        buttonBack.setOnClickListener(v -> finish());
     }
 
     private void init() {
+        boolean isUpdateScreen = getIntent().getBooleanExtra("update", false);
         alimentoController = new AlimentoController(RightFitDatabase.getDatabase(getBaseContext()).alimentoDao());
         adicionarAlimentoController = new AdicionarAlimentoController(RightFitDatabase.getDatabase(getBaseContext()).dietaDao());
         textViewNome = findViewById(R.id.edit_alimento);
@@ -76,10 +90,18 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
         textViewFibras = findViewById(R.id.text_fibras);
         buttonAlimento = findViewById(R.id.button);
         editTextQuantidade = findViewById(R.id.edit_quantidade);
+        buttonBack = findViewById(R.id.imageview_arrowback);
+
+        if(isUpdateScreen){
+            buttonAlimento.setText("Atualizar");
+        }
     }
 
     private void setObservables() {
-        int alimentoId = getAlimentoIdFromIntent();
+        int alimentoId = getIntent().getIntExtra("alimento_id", 0);
+        boolean isUpdateScreen = getIntent().getBooleanExtra("update", false);
+        String periodo = getIntent().getStringExtra("periodo");
+
         alimentoController.getAlimentoById(alimentoId).observe(this, alimento -> {
             textViewCalorias.setText(getBaseContext().getString(R.string.Calorias) + ": " + alimento.getCaloria());
             textViewNome.setText(alimento.getNome());
@@ -88,10 +110,15 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
             textViewCarboidratos.setText(getBaseContext().getString(R.string.Carboidratos) + ": " + alimento.getCarboidratos());
             textViewFibras.setText(getBaseContext().getString(R.string.Fibras) + ": " + alimento.getFibra());
         });
-    }
 
-    private int getAlimentoIdFromIntent() {
-        Intent intentExtra = getIntent();
-        return intentExtra.getIntExtra("alimento_id", 0);
+        if(isUpdateScreen){
+            adicionarAlimentoController.getQuantidadeDoAlimento(alimentoId, FirebaseAuth.getInstance().getUid(), PeriodoEnum.valueOf(periodo)).observe(this, dietaRecebida -> {
+                if(dietaRecebida == null || dietaRecebida.getQuantidade() == 0){
+                    return;
+                }
+                dieta = dietaRecebida;
+                editTextQuantidade.setText(String.valueOf(dietaRecebida.getQuantidade()));
+            });
+        }
     }
 }

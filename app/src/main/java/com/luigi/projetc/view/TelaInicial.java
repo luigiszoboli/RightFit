@@ -6,74 +6,92 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.luigi.projetc.R;
+import com.luigi.projetc.controller.TelaInicialController;
+import com.luigi.projetc.database.RightFitDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TelaInicial#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class TelaInicial extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextView textViewMeta;
+    private TextView textViewCalorias;
+    private TextView textViewGorduras;
+    private TextView textViewProteinas;
+    private TextView textViewCarboidratos;
+    private TelaInicialController telaInicialController;
+    private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    private final Handler uiThread = new Handler(Looper.getMainLooper());
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TelaInicial() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TelaInicial.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TelaInicial newInstance(String param1, String param2) {
-        TelaInicial fragment = new TelaInicial();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tela_inicial, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
+        getDadosDaTela();
+    }
 
-        TextView textViewMeta = view.findViewById(R.id.textView_meta);
+    private void getDadosDaTela(){
+        Runnable runnable = () -> {
+            Double carboidratos = telaInicialController.getCarboidratosIngeridos();
+            Double gorduras = telaInicialController.getGorduras();
+            Double proteinas = telaInicialController.getProteinas();
+            Integer calorias = telaInicialController.getCalorias();
+            Integer meta = telaInicialController.getMeta();
 
-        textViewMeta.setText("");
+            uiThread.post(() -> {
+                if(carboidratos != null){
+                    textViewCarboidratos.setText(carboidratos.toString());
+                }
 
+                if(gorduras != null){
+                    textViewGorduras.setText(gorduras.toString());
+                }
+
+                if(proteinas != null){
+                    textViewProteinas.setText(proteinas.toString());
+                }
+
+                if(calorias != null){
+                    textViewCalorias.setText(calorias.toString());
+                }
+
+                if(meta != null) {
+                    textViewMeta.setText(meta.toString());
+                }
+            });
+        };
+        mExecutor.execute(runnable);
+    }
+
+    private void init(){
+        textViewMeta = getView().findViewById(R.id.editText_meta_inicio);
+        textViewCalorias = getView().findViewById(R.id.editText_calorias_ingeridas);
+        textViewProteinas = getView().findViewById(R.id.editText_proteinas_ingeridas);
+        textViewGorduras = getView().findViewById(R.id.editText_gorduras_ingeridas);
+        textViewCarboidratos = getView().findViewById(R.id.editText_carboidratos_ingeridas);
+        telaInicialController = new TelaInicialController(
+                RightFitDatabase.getDatabase(getContext()).dietaDao(),
+                RightFitDatabase.getDatabase(getContext()).metaDao()
+        );
     }
 }

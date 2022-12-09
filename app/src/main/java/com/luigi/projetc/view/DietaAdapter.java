@@ -17,14 +17,14 @@ import java.util.List;
 public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> {
 
     private List<AlimentoEntity> alimentos = new ArrayList<>();
-    private RecyclerViewOnClickListener recyclerViewOnClickListener;
+    private RecyclerViewOnClickListener<Integer> recyclerViewOnClickListener;
 
     public void setAlimentos(List<AlimentoEntity> alimentos){
         this.alimentos = alimentos;
         notifyDataSetChanged();
     }
 
-    public void setOnClickItem(RecyclerViewOnClickListener recyclerViewOnClickListener){
+    public void setOnClickItem(RecyclerViewOnClickListener<Integer> recyclerViewOnClickListener){
         this.recyclerViewOnClickListener = recyclerViewOnClickListener;
     }
 

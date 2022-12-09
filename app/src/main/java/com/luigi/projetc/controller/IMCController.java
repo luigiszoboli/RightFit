@@ -56,7 +56,7 @@ public class IMCController {
     }
 
     public void insertImc(String altura, String peso, String userId) {
-        imcDao.insertImc(new ImcEntity(0, Double.parseDouble(peso), Integer.parseInt(altura), userId, new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
+        imcDao.insertImc(new ImcEntity(0, Double.parseDouble(peso), Double.parseDouble(altura), userId, new SimpleDateFormat("dd/MM/yyyy").format(new Date())));
     }
 
     public ImcEntity getImc(){

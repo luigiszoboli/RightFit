@@ -23,7 +23,6 @@ import com.luigi.projetc.controller.IMCController;
 import com.luigi.projetc.database.RightFitDatabase;
 import com.luigi.projetc.database.entities.ImcEntity;
 
-import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -45,7 +44,6 @@ public class TelaIMC extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_tela_imc, container, false);
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -85,9 +83,11 @@ public class TelaIMC extends Fragment {
             mExecutor.execute(backgroundRunnable);
         });
         diaAnterior.setOnClickListener(v -> {
+            imcController.diaAnterior();
             buscaDadosImc();
         });
         diaPosterior.setOnClickListener(v -> {
+            imcController.diaPosterior();
             buscaDadosImc();
         });
     }
@@ -96,21 +96,27 @@ public class TelaIMC extends Fragment {
         Runnable runnable = () -> {
             ImcEntity imc = imcController.getImc();
 
-            if(imc == null){
-               uiThread.post(() -> {
-                   tvImc.setText("Calcule seu IMC!");
-               });
-            }
-
             uiThread.post(() -> {
-                tvImc.setText(imc.toString());
+                if(imc == null){
+                    editPeso.setText("0.00");
+                    editAltura.setText("0.00");
+                    tvImc.setText("Calcule seu IMC!");
+                    return;
+                }
+                Double peso = imc.getPesoKg();
+                Double altura = imc.getAltura();
+                Double imcCalculado = calculaIMC(peso, altura);
+
+                editPeso.setText(String.valueOf(peso));
+                editAltura.setText(String.valueOf(altura));
+                tvImc.setText(imcCalculado.toString());
             });
         };
         mExecutor.execute(runnable);
     }
 
     public Double calculaIMC (Double peso, Double altura) {
-        Double imc = (peso / (altura * altura)) * 100;
+        Double imc = peso / (altura * altura);
         return imc;
     }
 

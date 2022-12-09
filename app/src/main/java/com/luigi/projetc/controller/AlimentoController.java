@@ -26,4 +26,9 @@ public class AlimentoController {
     public LiveData<AlimentoEntity> getAlimentoById(int id){
         return alimentoDao.getAlimentoPorId(id);
     }
+
+    public List<AlimentoEntity> pesquisarAlimento(String pesquisa){
+        return alimentoDao.pesquisarAlimentos(pesquisa);
+    }
+
 }

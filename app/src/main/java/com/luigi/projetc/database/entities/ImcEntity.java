@@ -3,22 +3,20 @@ package com.luigi.projetc.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity
 public class ImcEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private double pesoKg;
-    private int alturaCm;
+    private double altura;
     private String fkUsuario;
     private String data;
 
-    public ImcEntity(int id, double pesoKg, int alturaCm, String fkUsuario, String data) {
+    public ImcEntity(int id, double pesoKg, double altura, String fkUsuario, String data) {
         this.id = id;
         this.pesoKg = pesoKg;
-        this.alturaCm = alturaCm;
+        this.altura = altura;
         this.fkUsuario = fkUsuario;
         this.data = data;
     }
@@ -39,12 +37,12 @@ public class ImcEntity {
         this.pesoKg = pesoKg;
     }
 
-    public int getAlturaCm() {
-        return alturaCm;
+    public double getAltura() {
+        return altura;
     }
 
-    public void setAlturaCm(int alturaCm) {
-        this.alturaCm = alturaCm;
+    public void setAltura(double altura) {
+        this.altura = altura;
     }
 
     public String getFkUsuario() {
@@ -68,7 +66,7 @@ public class ImcEntity {
         return "ImcEntity{" +
                 "id=" + id +
                 ", pesoKg=" + pesoKg +
-                ", alturaCm=" + alturaCm +
+                ", alturaCm=" + altura +
                 ", fkUsuario=" + fkUsuario +
                 ", data=" + data +
                 '}';

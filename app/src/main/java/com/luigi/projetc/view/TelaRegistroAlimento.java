@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.luigi.projetc.R;
@@ -33,7 +34,6 @@ import java.util.concurrent.Executors;
 
 public class TelaRegistroAlimento extends Fragment {
 
-    private static final String TAG = "TelaRegistroAlimento";
     private Button bt_entrar, bt_entrar2, bt_entrar3;
     private TextView textViewData;
     private RegistroAlimentoController registroAlimentoController;
@@ -81,6 +81,13 @@ public class TelaRegistroAlimento extends Fragment {
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 saveMeta(v.getText().toString());
                 getDadosCaloria();
+
+                // Fechando teclado
+                MainActivity activity = (MainActivity) getActivity();
+                activity.closeKeyboard();
+
+                Snackbar.make(getView(), "Meta Atualizada!", Snackbar.LENGTH_SHORT).show();
+
                 return true;
             }
             return false;
@@ -152,6 +159,30 @@ public class TelaRegistroAlimento extends Fragment {
             intent.putExtra("data", registroAlimentoController.dataAtualObservable().getValue());
             startActivity(intent);
         });
+
+        dietaAdapterManha.setOnClickItem(id -> {
+            Intent intent = new Intent(getView().getContext(), TelaAdicionarAlimento.class);
+            intent.putExtra("alimento_id", id);
+            intent.putExtra("update", true);
+            intent.putExtra("periodo", PeriodoEnum.CAFE_DA_MANHA.name());
+            startActivity(intent);
+        });
+
+        dietaAdapterAlmoco.setOnClickItem(id -> {
+            Intent intent = new Intent(getView().getContext(), TelaAdicionarAlimento.class);
+            intent.putExtra("alimento_id", id);
+            intent.putExtra("update", true);
+            intent.putExtra("periodo", PeriodoEnum.ALMOCO.name());
+            startActivity(intent);
+        });
+
+        dietaAdapterJanta.setOnClickItem(id -> {
+            Intent intent = new Intent(getView().getContext(), TelaAdicionarAlimento.class);
+            intent.putExtra("alimento_id", id);
+            intent.putExtra("update", true);
+            intent.putExtra("periodo", PeriodoEnum.JANTA.name());
+            startActivity(intent);
+        });
     }
 
     private void initComponents() {
@@ -177,7 +208,6 @@ public class TelaRegistroAlimento extends Fragment {
         dietaAdapterManha = new DietaAdapter();
         dietaAdapterAlmoco = new DietaAdapter();
         dietaAdapterJanta = new DietaAdapter();
-
         recyclerViewManha.setAdapter(dietaAdapterManha);
         recyclerViewAlmoco.setAdapter(dietaAdapterAlmoco);
         recyclerViewJanta.setAdapter(dietaAdapterJanta);

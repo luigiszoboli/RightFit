@@ -12,7 +12,7 @@
             android:id="@+id/edit_searchbox"
             style="@style/Edit_Searchbox"
             android:textColorHint="@color/white"
-            android:hint="   Pesquisar"
+            android:hint="Pesquisar"
             android:drawableRight="@drawable/ic_search"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
