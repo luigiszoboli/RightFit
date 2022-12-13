@@ -30,4 +30,8 @@ public class AdicionarAlimentoController {
     public void atualizarQuantidadeDoALimento(DietaEntity dieta) {
         dietaDao.updateDieta(dieta);
     }
+
+    public void excluirDieta(DietaEntity dieta) {
+        dietaDao.excluirDieta(dieta);
+    }
 }

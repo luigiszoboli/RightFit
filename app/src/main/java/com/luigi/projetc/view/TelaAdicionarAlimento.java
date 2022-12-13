@@ -30,6 +30,7 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
     private TextView textViewNome, textViewCalorias, textViewGorduras, textViewProteinas, textViewCarboidratos, textViewFibras;
     private EditText editTextQuantidade;
     private Button buttonAlimento;
+    private Button buttonExcluir;
     private ImageView buttonBack;
     private DietaEntity dieta;
     ExecutorService mExecutor = Executors.newSingleThreadExecutor();
@@ -75,6 +76,19 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
             finish();
         });
 
+        buttonExcluir.setOnClickListener(v -> {
+            Runnable runnable = () -> {
+                adicionarAlimentoController.excluirDieta(dieta);
+
+                runOnUiThread(() -> {
+                    View parentLayout = findViewById(android.R.id.content);
+                    Snackbar.make(parentLayout, "Alimento retirado da sua dieta.", Snackbar.LENGTH_LONG)
+                            .show();
+                });
+            };
+            mExecutor.execute(runnable);
+        });
+
         buttonBack.setOnClickListener(v -> finish());
     }
 
@@ -89,11 +103,13 @@ public class TelaAdicionarAlimento extends AppCompatActivity {
         textViewCarboidratos = findViewById(R.id.text_carboidratos);
         textViewFibras = findViewById(R.id.text_fibras);
         buttonAlimento = findViewById(R.id.button);
+        buttonExcluir = findViewById(R.id.button_excluir);
         editTextQuantidade = findViewById(R.id.edit_quantidade);
         buttonBack = findViewById(R.id.imageview_arrowback);
 
         if(isUpdateScreen){
             buttonAlimento.setText("Atualizar");
+            buttonExcluir.setVisibility(View.VISIBLE);
         }
     }
 

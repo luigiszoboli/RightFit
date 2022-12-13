@@ -2,6 +2,7 @@ package com.luigi.projetc.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -39,4 +40,7 @@ public interface DietaDao {
 
     @Query("SELECT d.* FROM DietaEntity d INNER JOIN AlimentoEntity a ON a.id =  d.fkAlimento WHERE a.id = :alimento AND d.fkUsuario = :userId AND d.periodo = :periodoEnum")
     LiveData<DietaEntity> getAlimentoDaDietaPorId(int alimento, String userId, PeriodoEnum periodoEnum);
+
+    @Delete
+    void excluirDieta(DietaEntity dieta);
 }

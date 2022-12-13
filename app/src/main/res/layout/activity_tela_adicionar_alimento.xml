@@ -134,7 +134,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         style="@style/Button"
@@ -143,4 +143,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_fibras" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_excluir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        style="@style/Button"
+        android:visibility="invisible"
+        android:text="Excluir"
+        android:textSize="15sp"
+        android:backgroundTint="#FA0606"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
