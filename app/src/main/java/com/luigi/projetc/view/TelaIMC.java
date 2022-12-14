@@ -23,6 +23,7 @@ import com.luigi.projetc.controller.IMCController;
 import com.luigi.projetc.database.RightFitDatabase;
 import com.luigi.projetc.database.entities.ImcEntity;
 
+import java.text.DecimalFormat;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,6 +33,7 @@ public class TelaIMC extends Fragment {
     private EditText editAltura;
     private Button buttonCalcular;
     private TextView tvImc;
+    private TextView tvImcTipo;
     private IMCController imcController;
     private ImageView diaAnterior;
     private ImageView diaPosterior;
@@ -63,6 +65,7 @@ public class TelaIMC extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         buttonCalcular.setOnClickListener(v -> {
+            DecimalFormat format = new DecimalFormat("#.##");
             String peso = editPeso.getText().toString();
             String altura = editAltura.getText().toString();
 
@@ -79,7 +82,8 @@ public class TelaIMC extends Fragment {
             };
 
             Double imc = calculaIMC(Double.parseDouble(peso), Double.parseDouble(altura));
-            tvImc.setText(imc.toString());
+            tvImc.setText("IMC: "+format.format(imc));
+            tvImcTipo.setText(getTipoImc(imc));
             mExecutor.execute(backgroundRunnable);
         });
         diaAnterior.setOnClickListener(v -> {
@@ -97,6 +101,7 @@ public class TelaIMC extends Fragment {
             ImcEntity imc = imcController.getImc();
 
             uiThread.post(() -> {
+                DecimalFormat format = new DecimalFormat("#.##");
                 if(imc == null){
                     editPeso.setText("0.00");
                     editAltura.setText("0.00");
@@ -107,12 +112,28 @@ public class TelaIMC extends Fragment {
                 Double altura = imc.getAltura();
                 Double imcCalculado = calculaIMC(peso, altura);
 
+
+                tvImcTipo.setText(getTipoImc(imcCalculado));
                 editPeso.setText(String.valueOf(peso));
                 editAltura.setText(String.valueOf(altura));
-                tvImc.setText(imcCalculado.toString());
+                tvImc.setText("IMC: "+format.format(imcCalculado));
             });
         };
         mExecutor.execute(runnable);
+    }
+
+    private String getTipoImc(double imc){
+        if (imc < 18.5) {
+            return "Voce esta abaixo de seu peso";
+        } else if(imc >= 18.5 && imc <= 24.9) {
+            return "Voce esta no seu peso ideal";
+        } else if(imc >= 25.0 && imc <= 29.9) {
+            return "Você está acima de seu peso (sobrepeso)";
+        } else if(imc >= 30.0 && imc <= 34.9) {
+            return "Você está com Obesidade grau I.";
+        }else{
+            return "Você está com Obesidade grau II (severa)";
+        }
     }
 
     public Double calculaIMC (Double peso, Double altura) {
@@ -135,5 +156,6 @@ public class TelaIMC extends Fragment {
         diaAnterior = getView().findViewById(R.id.iv_dia_anterior);
         diaPosterior = getView().findViewById(R.id.iv_dia_posterior);
         textViewData = getView().findViewById(R.id.tv_data);
+        tvImcTipo = getView().findViewById(R.id.text_imc);
     }
 }

@@ -34,30 +34,24 @@ public class TelaLogin extends AppCompatActivity {
         setContentView(R.layout.activity_tela_login);
         init();
 
-        text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        text_tela_cadastro.setOnClickListener(view -> {
 
-                Intent intent = new Intent(TelaLogin.this, TelaCadastro.class);
-                intent.putExtra("id_user", 0);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(TelaLogin.this, TelaCadastro.class);
+            intent.putExtra("id_user", 0);
+            startActivity(intent);
         });
 
-        button_entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = edit_email.getText().toString();
-                String senha = edit_senha.getText().toString();
+        button_entrar.setOnClickListener(view -> {
+            String email = edit_email.getText().toString();
+            String senha = edit_senha.getText().toString();
 
-                if (email.isEmpty() || senha.isEmpty()) {
-                    Snackbar snackbar = Snackbar.make(view, "Preencha todos os campos", Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
-                } else {
-                    autenticarUsuario(view);
-                }
+            if (email.isEmpty() || senha.isEmpty()) {
+                Snackbar snackbar = Snackbar.make(view, "Preencha todos os campos", Snackbar.LENGTH_SHORT);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.show();
+            } else {
+                autenticarUsuario(view);
             }
         });
     }

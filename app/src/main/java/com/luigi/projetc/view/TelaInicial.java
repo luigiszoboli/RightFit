@@ -18,6 +18,8 @@ import com.luigi.projetc.R;
 import com.luigi.projetc.controller.TelaInicialController;
 import com.luigi.projetc.database.RightFitDatabase;
 
+import org.w3c.dom.Text;
+
 import java.text.DecimalFormat;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,7 +34,9 @@ public class TelaInicial extends Fragment {
     private TextView textViewRestanteCalorias;
     private TextView textViewRestanteCarboidratos;
     private TextView textViewRestanteGorduras;
+    private TextView textViewGordurasSugeridas;
     private TextView textViewRestanteProteinas;
+    private TextView textViewProteinasSugeridas;
     private TextView textViewCarboidratosIndicados;
     private TelaInicialController telaInicialController;
     private ImageView diaAnterior;
@@ -88,6 +92,7 @@ public class TelaInicial extends Fragment {
             Double proteinas = telaInicialController.getProteinas();
             Integer calorias = telaInicialController.getCalorias();
             Integer meta = telaInicialController.getMeta();
+            Double pesoUsuario = telaInicialController.getPeso();
 
             uiThread.post(() -> {
                 if(carboidratos != null){
@@ -103,12 +108,21 @@ public class TelaInicial extends Fragment {
 
                 if(gorduras != null){
                     textViewGorduras.setText(format.format(gorduras));
-                    Double gordurasRestantes = 22 - gorduras;
-                    textViewRestanteGorduras.setText(gordurasRestantes < 0 ? (format.format(gordurasRestantes*-1))+" a mais" : format.format(gordurasRestantes));
+                    Double gordurasSugeridas = (0.35 * pesoUsuario);
+
+
+                    textViewGordurasSugeridas.setText(gordurasSugeridas+"g");
+                    double gordurasRestantes =  gordurasSugeridas - gorduras;
+                    String textRestantes = gordurasRestantes < 0 ? (format.format(gorduras - gordurasSugeridas))+" a mais": gordurasRestantes+"";
+                    textViewRestanteGorduras.setText(gorduras < gordurasSugeridas ? (format.format(gordurasSugeridas - gorduras ))+" a mais" : textRestantes);
                 }
 
                 if(proteinas != null){
+                    Double proteinaSugerida = 0.8 * pesoUsuario;
+                    Double proteinasRestantes = proteinaSugerida - proteinas;
+                    textViewProteinasSugeridas.setText(proteinaSugerida+" g/kg");
                     textViewProteinas.setText(format.format(proteinas));
+                    textViewRestanteProteinas.setText(proteinasRestantes < proteinaSugerida? format.format(proteinasRestantes) : (format.format(proteinasRestantes - proteinaSugerida))+" a mais");
                 }
 
                 if(calorias != null){
@@ -146,5 +160,7 @@ public class TelaInicial extends Fragment {
         diaAnterior = getView().findViewById(R.id.image_view_dia_anterior_inicial);
         diaPosterior = getView().findViewById(R.id.image_view_dia_posterior_inicial);
         textViewData = getView().findViewById(R.id.textView_data_inicial);
+        textViewGordurasSugeridas = getView().findViewById(R.id.editText_gorduras_indicada);
+        textViewProteinasSugeridas = getView().findViewById(R.id.editText_proteinas_indicada);
     }
 }

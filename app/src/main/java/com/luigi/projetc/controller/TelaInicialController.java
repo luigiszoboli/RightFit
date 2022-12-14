@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.luigi.projetc.database.dao.DietaDao;
 import com.luigi.projetc.database.dao.ImcDao;
 import com.luigi.projetc.database.dao.MetaDao;
+import com.luigi.projetc.database.entities.ImcEntity;
 import com.luigi.projetc.database.entities.MetaEntity;
 
 import java.text.ParseException;
@@ -90,4 +91,13 @@ public class TelaInicialController {
         }
     }
 
+    public Double getPeso() {
+        List<ImcEntity> imc = imcDao.getImcPorUsuarioEData(dataAtual.getValue(), FirebaseAuth.getInstance().getUid());
+        System.out.println(imc);
+        if(imc == null || imc.size() == 0){
+            return 0.0;
+        }
+
+        return imc.get(imc.size() - 1).getPesoKg();
+    }
 }
